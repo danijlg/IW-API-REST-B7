@@ -1,10 +1,15 @@
 import React, {useState, useEffect, useMemo} from 'react'
 import './App.css';
-import Map from './Map';
+import Map from './Map.js';
 
 
 function Api_Django(){
+<<<<<<< HEAD
     const [UsuarioList, getUsuarioList]=useState([]);
+=======
+    // GET
+    const [UsuarioList,getUsuarioList]=useState([]);
+>>>>>>> origin/master
     const [CommentsList, getCommentsList]=useState([]);
     const [usuarioById, getUsuarioById]=useState([]);
     const [comentarioById, getComentarioById]=useState([]);
@@ -146,6 +151,39 @@ function Api_Django(){
         }).then(response=>response.json())
         .then(response=>getComentarioByDate(response))
         .then(error=>console.log(error))
+    }
+
+    // POST
+    function PostUsuario(){
+        var name = document.getElementById("nameUser").value;
+        var surname = document.getElementById("surnameUser").value;
+        var address = document.getElementById("addressUser").value;
+        if(name == "" || surname == "" || address == "") alert("Rellena todos los campos");
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name, surname: surname, address: address })
+        };
+        fetch('http://127.0.0.1:8000/crud/usuario/', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }));
+        alert("Usuario añadido correctamente")
+    }
+
+    function PostComentario(){
+        var author = document.getElementById("authorComment").value;
+        var comment = document.getElementById("commentComment").value;
+        var date = document.getElementById("dateComment").value;
+        if(author == "" || comment == "" || date == "") alert("Rellena todos los campos");
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ author: author, coment: comment, date: date })
+        };
+        fetch('http://127.0.0.1:8000/crud/comentario/', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }));
+        alert("Comentario añadido correctamente")
     }
 
     useEffect(()=>{
@@ -368,6 +406,34 @@ function Api_Django(){
                                         }
                                 </tbody>
                             </table>
+                        
+                        <hr></hr>
+                        <h2>Posts</h2>
+                        <h3>Insertar Usuario</h3>
+                        <label><br/>Nombre<br/></label>
+                        <input type="text" placeholder='Inserte un nombre' id='nameUser'></input>
+                        <label><br/>Apellido<br/></label>
+                        <input type="text" placeholder='Inserte un apellido' id='surnameUser'></input>
+                        <label><br/>Direccion<br/></label>
+                        <input type="text" placeholder='Inserte una dirección' id='addressUser'></input>
+                        <br/>
+                        <br/>
+                        <button onClick={PostUsuario}>
+                            Insertar Usuario
+                        </button>
+
+                        <h3>Insertar Comentario</h3>
+                        <label><br/>Autor<br/></label>
+                        <input type="number" placeholder='Inserte una id de usuario' id='authorComment'></input>
+                        <label><br/>Comentario<br/></label>
+                        <input type="text" placeholder='Inserte un comentario' id='commentComment'></input>
+                        <label><br/>Fecha<br/></label>
+                        <input type="date" id='dateComment'></input>
+                        <br/>
+                        <br/>
+                        <button onClick={PostComentario}>
+                            Insertar Comentario
+                        </button>
                 </div>
             </body>
         </html>
