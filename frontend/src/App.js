@@ -2,16 +2,16 @@ import React, {useState, useEffect, useMemo} from 'react'
 import './App.css';
 import Map from './Map';
 
-// Importante poner en los requirements pip install django-cors-headers
+
 function Api_Django(){
-    const [UsuarioList,getUsuarioList]=useState([]);
+    const [UsuarioList, getUsuarioList]=useState([]);
     const [CommentsList, getCommentsList]=useState([]);
     const [usuarioById, getUsuarioById]=useState([]);
     const [comentarioById, getComentarioById]=useState([]);
     const [usuarioByName, getUsuarioByName]=useState([]);
     const [usuarioComments, getUsuarioComments]=useState([]);
     const [comentarioByDate, getComentarioByDate]=useState([]);
-
+    
     function GetUsuarioList(){
         fetch('http://127.0.0.1:8000/crud/usuario/',
         {
@@ -22,6 +22,19 @@ function Api_Django(){
         }).then(response=>response.json())
         .then(response=>getUsuarioList(response))
         .then(error=>console.log(error))
+    }
+    
+    function DeleteUsuario(id){
+        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
+        {
+            method:'DELETE', 
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(response=>response.json())
+        .then(error=>console.log(error))
+        alert("Usuario borrado con exito")
+        GetUsuarioList()
     }
 
     function GetCommentsList(){
@@ -34,6 +47,19 @@ function Api_Django(){
         }).then(response=>response.json())
         .then(response=>getCommentsList(response))
         .then(error=>console.log(error))
+    }
+
+    function DeleteComentario(id){
+        fetch('http://127.0.0.1:8000/crud/comentario/' + id + '/',
+        {
+            method:'DELETE', 
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(response=>response.json())
+        .then(error=>console.log(error))
+        alert("Comentario borrado con exito")
+        GetCommentsList()
     }
 
     function GetUsuarioById(id){
@@ -155,6 +181,7 @@ function Api_Django(){
                                         <th>Name</th>
                                         <th>Surname</th>
                                         <th>Address</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -166,11 +193,13 @@ function Api_Django(){
                                                         <td>{userList.name}</td>
                                                         <td>{userList.surname}</td>
                                                         <td>{userList.address}</td>
+                                                        <td> <button type="submit" onClick={() => DeleteUsuario(userList.id)}> Borrar Usuario </button> </td>
                                                     </tr>
                                                     
                                                 )
                                             })
                                         }
+                                        
                                 </tbody>
                             </table>
                         
@@ -193,6 +222,7 @@ function Api_Django(){
                                                         <td>{comentarioList.author}</td>
                                                         <td>{comentarioList.coment}</td>
                                                         <td>{comentarioList.date}</td>
+                                                        <td> <button type="submit" onClick={() => DeleteComentario(comentarioList.id)}> Borrar Comentario </button> </td>
                                                     </tr>
                                                     
                                                 )
