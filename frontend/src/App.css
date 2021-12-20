@@ -1,4 +1,4 @@
-div {
+body {
   text-align: center;
 }
 table {
@@ -44,12 +44,11 @@ h1, h2, h3 {
 
 input{
   width: 300px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
-#map { 
-  position:absolute;
-  height: 700px; 
-  width: 700px;
-  align-self: center !important;
+button{
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
-

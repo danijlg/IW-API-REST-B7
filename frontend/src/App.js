@@ -2,6 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react'
 import './App.css';
 import ComentarioListComponent from './components/ComentarioListComponent';
 import UsuarioListComponent from './components/UsuarioListComponent';
+import AppMap from './components/MapsApp';
 
 
 // Importante poner en los requirements pip install django-cors-headers
@@ -216,7 +217,12 @@ function Api_Django(){
                         <input type="date" onChange={(evt) => {GetComentarioByDate(evt.target.value);}}></input>
                         <br/>
                             <ComentarioListComponent lista={comentarioByDate} single={false}/>
-                        
+
+                        <hr/>
+
+                        <h2>Mapas</h2>
+                            <AppMap></AppMap>
+                            
                         <hr></hr>
                         <h2>Posts</h2>
                         <h3>Insertar Usuario</h3>
