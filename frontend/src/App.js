@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useMemo} from 'react'
 import './App.css';
-import Map from './Map.js';
+import ComentarioListComponent from './components/ComentarioListComponent';
+import UsuarioListComponent from './components/UsuarioListComponent';
+
 
 // Importante poner en los requirements pip install django-cors-headers
 function Api_Django(){
@@ -182,196 +184,38 @@ function Api_Django(){
                         <hr></hr>
                         <h2><u>Lista completa</u></h2>
                         <h3>Lista de Usuarios</h3>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Surname</th>
-                                        <th>Address</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        {
-                                            UsuarioList.map(userList=>{
-                                                return(
-                                                    <tr class="set_row">
-                                                        <td>{userList.id}</td>
-                                                        <td>{userList.name}</td>
-                                                        <td>{userList.surname}</td>
-                                                        <td>{userList.address}</td>
-                                                    </tr>
-                                                    
-                                                )
-                                            })
-                                        }
-                                </tbody>
-                            </table>
+                            <UsuarioListComponent lista={UsuarioList} single={false}/>
                         
                             <h3>Lista de Comentarios</h3>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Author</th>
-                                        <th>Comment</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        {
-                                            CommentsList.map(comentarioList=>{
-                                                return(
-                                                    <tr class="set_row">
-                                                        <td>{comentarioList.id}</td>
-                                                        <td>{comentarioList.author}</td>
-                                                        <td>{comentarioList.coment}</td>
-                                                        <td>{comentarioList.date}</td>
-                                                    </tr>
-                                                    
-                                                )
-                                            })
-                                        }
-                                </tbody>
-                            </table>
+                            <ComentarioListComponent lista={CommentsList} single={false}/>
 
                         <hr/>
                         <h2><u>Búsquedas parametrizadas</u></h2>
                         <h3>Buscar Usuario por ID</h3>
                         <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {GetUsuarioById(evt.target.value);}}></input>
                         <br></br>
-                        <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Surname</th>
-                                        <th>Address</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        {
-                                                    <tr class="set_row">
-                                                        <td>{usuarioById.id}</td>
-                                                        <td>{usuarioById.name}</td>
-                                                        <td>{usuarioById.surname}</td>
-                                                        <td>{usuarioById.address}</td>
-                                                    </tr>
-                                        }
-                                </tbody>
-                            </table>
+                            <UsuarioListComponent lista={usuarioById} single={true}/>
 
                         <h3>Buscar Usuario por nombre</h3>
                         <input type="text" placeholder="Escriba un nombre de usuario" onChange={(evt) => {GetUsuarioByName(evt.target.value);}}></input>
                         <br></br>
-                        <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Surname</th>
-                                        <th>Address</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        {
-                                            usuarioByName.map(userList=>{
-                                                return(
-                                                    <tr class="set_row">
-                                                        <td>{userList.id}</td>
-                                                        <td>{userList.name}</td>
-                                                        <td>{userList.surname}</td>
-                                                        <td>{userList.address}</td>
-                                                    </tr>
-                                                    
-                                                )
-                                            })
-                                        }
-                                </tbody>
-                            </table>
+                            <UsuarioListComponent lista={usuarioByName} single={false}/>
                         
                         <br></br>
                         <h3>Buscar Comentario por ID</h3>
                         <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {GetComentarioById(evt.target.value);}}></input>
                         <br/>
-                        <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Author</th>
-                                        <th>Comment</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        {
-                                                    <tr class="set_row">
-                                                        <td>{comentarioById.id}</td>
-                                                        <td>{comentarioById.author}</td>
-                                                        <td>{comentarioById.coment}</td>
-                                                        <td>{comentarioById.date}</td>
-                                                    </tr>
-                                        }
-                                </tbody>
-                            </table>
+                            <ComentarioListComponent lista={comentarioById} single={true}/>
 
                         <h3>Buscar Comentarios por autor</h3>
                         <input type="number" placeholder="Escriba una id de autor válida" onChange={(evt) => {GetUsuarioComments(evt.target.value);}}></input>
                         <br/>
-                        <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Author</th>
-                                        <th>Comment</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        {
-                                            usuarioComments.map(comentarioList=>{
-                                                return(
-                                                    <tr class="set_row">
-                                                        <td>{comentarioList.id}</td>
-                                                        <td>{comentarioList.author}</td>
-                                                        <td>{comentarioList.coment}</td>
-                                                        <td>{comentarioList.date}</td>
-                                                    </tr>
-                                                    
-                                                )
-                                            })
-                                        }
-                                </tbody>
-                            </table>
+                            <ComentarioListComponent lista={usuarioComments} single={false}/>
 
                         <h3>Buscar Comentarios por Fecha</h3>
                         <input type="date" onChange={(evt) => {GetComentarioByDate(evt.target.value);}}></input>
                         <br/>
-                        <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Author</th>
-                                        <th>Comment</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        {
-                                            comentarioByDate.map(comentarioList=>{
-                                                return(
-                                                    <tr class="set_row">
-                                                        <td>{comentarioList.id}</td>
-                                                        <td>{comentarioList.author}</td>
-                                                        <td>{comentarioList.coment}</td>
-                                                        <td>{comentarioList.date}</td>
-                                                    </tr>
-                                                    
-                                                )
-                                            })
-                                        }
-                                </tbody>
-                            </table>
+                            <ComentarioListComponent lista={comentarioByDate} single={false}/>
                         
                         <hr></hr>
                         <h2>Posts</h2>
