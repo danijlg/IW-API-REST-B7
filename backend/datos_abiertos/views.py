@@ -93,7 +93,7 @@ def get_json_aparcamientos_dentro(request, lon, lat, radius):
         lon_aparcamiento = float(location.get('value').get('coordinates')[1])
         lat_aparcamiento = float(location.get('value').get('coordinates')[0])
         if lon_aparcamiento != 0.0 and lat_aparcamiento != 0.0 and dentro_perimetro(float(lon_aparcamiento),float(lat_aparcamiento),source,radius):
-            points.append(json.dumps(location))
+            points.append(location)
     return HttpResponse(json.dumps(points))
 
 def get_aparcamiento_cercano(request, lon, lat):
