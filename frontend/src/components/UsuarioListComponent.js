@@ -1,5 +1,15 @@
-export default function UserListComponent( {lista, single} ) {
-    if(single===false){
+export default function UserListComponent( {lista, actualizar} ) {
+    function DeleteUsuario(id){
+        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
+        {
+            method:'DELETE', 
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+        alert("Usuario borrado con exito")
+        actualizar();
+    }
         return(
             <table>
                 <thead>
@@ -8,6 +18,7 @@ export default function UserListComponent( {lista, single} ) {
                         <th>Name</th>
                         <th>Surname</th>
                         <th>Address</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,6 +30,7 @@ export default function UserListComponent( {lista, single} ) {
                                         <td>{userList.name}</td>
                                         <td>{userList.surname}</td>
                                         <td>{userList.address}</td>
+                                        <td> <button type="submit" onClick={() => DeleteUsuario(userList.id)}> Borrar Usuario </button> </td>
                                     </tr>
                                     
                                 )
@@ -27,28 +39,3 @@ export default function UserListComponent( {lista, single} ) {
                 </tbody>
             </table>
         ); }
-    else {
-        return(
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        {
-                            <tr class="set_row">
-                                <td>{lista.id}</td>
-                                <td>{lista.name}</td>
-                                <td>{lista.surname}</td>
-                                <td>{lista.address}</td>
-                            </tr>
-                        }
-                </tbody>
-            </table>
-        ); 
-    }
-}

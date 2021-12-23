@@ -1,5 +1,15 @@
-export default function ComentarioListComponent( {lista, single} ) {
-    if(single===false){
+export default function ComentarioListComponent( {lista, actualizar} ) {
+    function DeleteComentario(id){
+    fetch('http://127.0.0.1:8000/crud/comentario/' + id + '/',
+    {
+        method:'DELETE', 
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    })
+    alert("Comentario borrado con exito")
+    actualizar();
+    }
         return(
             <table>
                 <thead>
@@ -8,6 +18,7 @@ export default function ComentarioListComponent( {lista, single} ) {
                         <th>Author</th>
                         <th>Comment</th>
                         <th>Date</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,6 +30,7 @@ export default function ComentarioListComponent( {lista, single} ) {
                                         <td>{comentarioList.author}</td>
                                         <td>{comentarioList.coment}</td>
                                         <td>{comentarioList.date}</td>
+                                        <td> <button type="submit" onClick={() => DeleteComentario(comentarioList.id)}> Borrar Comentario </button> </td>
                                     </tr>
                                     
                                 )
@@ -27,28 +39,3 @@ export default function ComentarioListComponent( {lista, single} ) {
                 </tbody>
             </table>
         ); }
-    else {
-        return(
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Author</th>
-                        <th>Comment</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        {
-                            <tr class="set_row">
-                                <td>{lista.id}</td>
-                                <td>{lista.author}</td>
-                                <td>{lista.coment}</td>
-                                <td>{lista.date}</td>
-                            </tr>
-                        }
-                </tbody>
-            </table>
-        ); 
-    }
-}
