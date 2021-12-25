@@ -6,6 +6,7 @@ import UsuarioListComponent from "./components/UsuarioListComponent";
 import ImagenesComponent from "./components/ImagenesComponent";
 import AppMap from "./components/MapsApp";
 import SubidaImagen from "./components/SubidaImagen";
+import ImageList from "./components/ImageList";
 
 function Api_Django() {
   // GET
@@ -475,6 +476,12 @@ function Api_Django() {
           <h2>Subida de Imágenes</h2>
           {/* <ImagenesComponent></ImagenesComponent> */}
           <SubidaImagen></SubidaImagen>
+        </div>
+        <div>
+          <h2>Lista de Imágenes</h2>
+          {/* <ImagenesComponent></ImagenesComponent> */}
+          <ImageList></ImageList>
+          {/* <img src="/media/images/deuda.jpeg" alt="deuda.jpeg" /> */}
         </div>
       </body>
     </html>
