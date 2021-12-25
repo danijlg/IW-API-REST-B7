@@ -9,39 +9,7 @@ import NavBar from "./Navbar";
 function Api_Django(){
     // GET
 
-    function PutUsuario(id){
-        var name = document.getElementById("nameUserPut").value;
-        var surname = document.getElementById("surnameUserPut").value;
-        var address = document.getElementById("addressUserPut").value;
-        if(name === "" || surname === "" || address === "") alert("Rellena todos los campos");
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, surname: surname, address: address })
-        };
-        fetch('http://127.0.0.1:8000/crud/usuario/'+ id  + '/', requestOptions)
-            .then(response => response.json())
-            .then(error=>console.log(error))
-        alert("Usuario actualizado correctamente")
-        //GetUsuarioList()
-    }
-
-    function PutComentario(id){
-        var author = document.getElementById("authorCommentPut").value;
-        var comment = document.getElementById("commentCommentPut").value;
-        var date = document.getElementById("dateCommentPut").value;
-        if(author === "" || comment === "" || date === "") alert("Rellena todos los campos");
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ author: author, coment: comment, date: date })
-        };
-        fetch('http://127.0.0.1:8000/crud/comentario/' + id + '/', requestOptions)
-            .then(response => response.json())
-            .then(error=>console.log(error))
-        alert("Comentario actualizado correctamente")
-        //GetCommentsList()
-    }
+    
 
     // POST
 
