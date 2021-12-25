@@ -63,7 +63,10 @@ export default function AppActualizar() {
     return(
         <div>
             <h3>Actualizar Usuario por ID</h3>
-            <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {GetUsuarioById(evt.target.value);}}></input>
+            <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {if (window.countInterval) clearTimeout(window.countInterval)
+                        window.countInterval = setTimeout(() => {
+                            GetUsuarioById(evt.target.value);
+                          }, 250);}}></input>
             <br/>
     
             <label><br/>ID<br/></label> 
@@ -79,7 +82,10 @@ export default function AppActualizar() {
             <button type="submit" onClick={() => PutUsuario(document.getElementById("idUser").value)}> Actualizar Usuario </button>
     
             <h3>Actualizar Comentario por ID</h3>
-            <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {GetComentarioById(evt.target.value);}}></input>
+            <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {if (window.countInterval) clearTimeout(window.countInterval)
+                        window.countInterval = setTimeout(() => {
+                            GetComentarioById(evt.target.value);
+                          }, 250);}}></input>
             <br/>
     
             <label><br/>ID<br/></label>
