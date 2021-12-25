@@ -4,28 +4,11 @@ import './App.css';
 import ComentarioListComponent from './components/ComentarioListComponent';
 import UsuarioListComponent from './components/UsuarioListComponent';
 import AppMap from './components/MapsApp';
+import NavBar from "./Navbar";
 
 function Api_Django(){
     // GET
-    const [UsuarioList,getUsuarioList]=useState([]);
-    const [CommentsList, getCommentsList]=useState([]);
-    const [usuarioById, getUsuarioById]=useState([]);
-    const [comentarioById, getComentarioById]=useState([]);
-    const [usuarioByName, getUsuarioByName]=useState([]);
-    const [usuarioComments, getUsuarioComments]=useState([]);
-    const [comentarioByDate, getComentarioByDate]=useState([]);
-    
-    function GetUsuarioList(){
-        fetch('http://127.0.0.1:8000/crud/usuario/',
-        {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(response=>response.json())
-        .then(response=>getUsuarioList(response))
-        .then(error=>console.log(error))
-    }
+
     function PutUsuario(id){
         var name = document.getElementById("nameUserPut").value;
         var surname = document.getElementById("surnameUserPut").value;
@@ -40,19 +23,7 @@ function Api_Django(){
             .then(response => response.json())
             .then(error=>console.log(error))
         alert("Usuario actualizado correctamente")
-        GetUsuarioList()
-    }
-
-    function GetCommentsList(){
-        fetch('http://127.0.0.1:8000/crud/comentario/',
-        {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(response=>response.json())
-        .then(response=>getCommentsList(response))
-        .then(error=>console.log(error))
+        //GetUsuarioList()
     }
 
     function PutComentario(id){
@@ -69,69 +40,7 @@ function Api_Django(){
             .then(response => response.json())
             .then(error=>console.log(error))
         alert("Comentario actualizado correctamente")
-        GetCommentsList()
-    }
-
-    function GetUsuarioById(id){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
-        {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(response=>response.json())
-        .then(response=>getUsuarioById([response]))
-        .then(error=>console.log(error))
-    }
-
-    function GetComentarioById(id){
-        fetch('http://127.0.0.1:8000/crud/comentario/' + id + '/',
-        {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(response=>response.json())
-        .then(response=>getComentarioById([response]))
-        .then(error=>console.log(error))
-    }
-
-    
-
-    function GetUsuarioByName(name){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + name + '/',
-        {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(response=>response.json())
-        .then(response=>getUsuarioByName(response))
-        .then(error=>console.log(error))
-    }
-
-    function GetUsuarioComments(id){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/comentario/',
-        {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(response=>response.json())
-        .then(response=>getUsuarioComments(response))
-        .then(error=>console.log(error))
-    }
-
-    function GetComentarioByDate(date){
-        fetch('http://127.0.0.1:8000/crud/comentario/' + date + '/',
-        {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(response=>response.json())
-        .then(response=>getComentarioByDate(response))
-        .then(error=>console.log(error))
+        //GetCommentsList()
     }
 
     // POST
@@ -147,7 +56,7 @@ function Api_Django(){
         };
         fetch('http://127.0.0.1:8000/crud/usuario/', requestOptions)
         alert("Usuario añadido correctamente")
-        GetUsuarioList();
+        //GetUsuarioList();
     }
 
     function PostComentario(){
@@ -164,18 +73,9 @@ function Api_Django(){
             .then(response => response.json())
             .then(data => this.setState({ postId: data.id }));
         alert("Comentario añadido correctamente")
-        GetCommentsList();
+        //GetCommentsList();
     }
 
-    useEffect(()=>{
-        GetUsuarioList();
-        GetCommentsList();
-        const interval = setInterval(() => {
-            GetUsuarioList();
-            GetCommentsList();
-          }, 10000);
-          return () => clearInterval(interval);
-    }, [])
     return(
         <html>
             <head>
@@ -188,43 +88,10 @@ function Api_Django(){
             </head>
 
             <body>
-                <div class="linea">
-                        <h1><b><u>Cliente: Práctica Ingeniería Web</u></b></h1>
+            <NavBar />
+                <div className="linea">
                         <hr></hr>
-                        <h2><u>Lista completa</u></h2>
-                        <h3>Lista de Usuarios</h3>
-                            <UsuarioListComponent lista={UsuarioList} actualizar={()=> GetUsuarioList()}/>
                         
-                            <h3>Lista de Comentarios</h3>
-                            <ComentarioListComponent lista={CommentsList} actualizar={()=> GetCommentsList()}/>
-
-                        <hr/>
-                        <h2><u>Búsquedas parametrizadas</u></h2>
-                        <h3>Buscar Usuario por ID</h3>
-                        <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {GetUsuarioById(evt.target.value);}}></input>
-                        <br></br>
-                            <UsuarioListComponent lista={usuarioById}/>
-
-                        <h3>Buscar Usuario por nombre</h3>
-                        <input type="text" placeholder="Escriba un nombre de usuario" onChange={(evt) => {GetUsuarioByName(evt.target.value);}}></input>
-                        <br></br>
-                            <UsuarioListComponent lista={usuarioByName}/>
-                        
-                        <br></br>
-                        <h3>Buscar Comentario por ID</h3>
-                        <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {GetComentarioById(evt.target.value);}}></input>
-                        <br/>
-                            <ComentarioListComponent lista={comentarioById}/>
-
-                        <h3>Buscar Comentarios por autor</h3>
-                        <input type="number" placeholder="Escriba una id de autor válida" onChange={(evt) => {GetUsuarioComments(evt.target.value);}}></input>
-                        <br/>
-                            <ComentarioListComponent lista={usuarioComments}/>
-
-                        <h3>Buscar Comentarios por Fecha</h3>
-                        <input type="date" onChange={(evt) => {GetComentarioByDate(evt.target.value);}}></input>
-                        <br/>
-                            <ComentarioListComponent lista={comentarioByDate}/>
 
                         <hr/>
 
@@ -259,41 +126,11 @@ function Api_Django(){
                             Insertar Comentario
                         </button>
 
-                        <h3>Actualizar Usuario por ID</h3>
-                        <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {GetUsuarioById(evt.target.value);}}></input>
-                        <br/>
                         
-                        <label><br/>ID<br/></label>
-                        <input type="number" value={usuarioById.id} id='idUser' disabled></input>
-                        <label><br/>Nombre<br/></label>
-                        <input type="text" value={usuarioById.name} id='nameUserPut'></input>
-                        <label><br/>Apellido<br/></label>
-                        <input type="text" value={usuarioById.surname} id='surnameUserPut'></input>
-                        <label><br/>Direccion<br/></label>
-                        <input type="text" value={usuarioById.address} id='addressUserPut'></input>
-                        <br/>
-                        <br/>
-                        <button type="submit" onClick={() => PutUsuario(document.getElementById("idUser").value)}> Actualizar Usuario </button>
-
-                        <h3>Actualizar Comentario por ID</h3>
-                        <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {GetComentarioById(evt.target.value);}}></input>
-                        <br/>
-                        
-                        <label><br/>ID<br/></label>
-                        <input type="number" value={comentarioById.id} id='idComment' disabled ></input>
-                        <label><br/>Autor<br/></label>
-                        <input type="number" value={comentarioById.author} id='authorCommentPut'></input>
-                        <label><br/>Comentario<br/></label>
-                        <input type="text" value={comentarioById.coment} id='commentCommentPut'></input>
-                        <label><br/>Fecha<br/></label>
-                        <input type="date" value={comentarioById.date}  id='dateCommentPut'></input>
-                        <br/>
-                        <br/>
-                        <button type="submit" onClick={() => PutComentario(document.getElementById("idComment").value)}>  Actualizar Comentario </button>
                 </div>
                 <div>
                     <h2>Subida de Imágenes</h2>
-                    <ImagenesComponent></ImagenesComponent>
+                    
                 </div>
             </body>
         </html>
