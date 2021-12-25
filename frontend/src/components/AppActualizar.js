@@ -64,43 +64,50 @@ export default function AppActualizar() {
   
     return(
         <div>
-            <h3>Actualizar Usuario por ID</h3>
+            <br/>
+            <br/>
+            <h3>Actualizar Usuario por ID</h3><br/>
             <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {if (window.countInterval) clearTimeout(window.countInterval)
                         window.countInterval = setTimeout(() => {
                             GetUsuarioById(evt.target.value);
                           }, 250);}}></input>
             <br/>
     
-            <label><br/>ID<br/></label> 
-            <input type="number" value={usuarioById.id} id="idUser" disabled></input>
-            <label><br/>Nombre<br/></label>
-            <input type="text" value={usuarioById.name} id="nameUserPut"></input>
-            <label><br/>Apellido<br/></label>
-            <input type="text" value={usuarioById.surname} id="surnameUserPut"></input>
-            <label><br/>Direccion<br/></label>
-            <input type="text" value={usuarioById.address} id="addressUserPut"></input>
+            <br/><br/>
+            <label>ID</label><br/>
+            <input type="number" value={usuarioById.id} id="idUser" disabled></input><br/><br/>
+            <label>Nombre</label><br/>
+            <input type="text" value={usuarioById.name} id="nameUserPut"></input><br/><br/>
+            <label>Apellido</label><br/>
+            <input type="text" value={usuarioById.surname} id="surnameUserPut"></input><br/><br/>
+            <label>Direccion</label><br/>
+            <input type="text" value={usuarioById.address} id="addressUserPut"></input><br/><br/>
             <br/>
             <br/>
-            <button type="submit" onClick={() => PutUsuario(document.getElementById("idUser").value)}> Actualizar Usuario </button>
+            <button type="submit" onClick={() => PutUsuario(document.getElementById("idUser").value)}> Actualizar Usuario </button><br/><br/>
+            <br/>
+            <br/>
     
-            <h3>Actualizar Comentario por ID</h3>
+            <h3>Actualizar Comentario por ID</h3><br/>
             <input type="number" placeholder="Escriba una id válida" onChange={(evt) => {if (window.countInterval) clearTimeout(window.countInterval)
                         window.countInterval = setTimeout(() => {
                             GetComentarioById(evt.target.value);
                           }, 250);}}></input>
             <br/>
     
-            <label><br/>ID<br/></label>
-            <input type="number" value={comentarioById.id} id='idComment' disabled ></input>
-            <label><br/>Autor<br/></label>
-            <input type="number" value={comentarioById.author} id='authorCommentPut'></input>
-            <label><br/>Comentario<br/></label>
-            <input type="text" value={comentarioById.coment} id='commentCommentPut'></input>
-            <label><br/>Fecha<br/></label>
-            <input type="date" value={comentarioById.date}  id='dateCommentPut'></input>
+            <label><br/>ID<br/></label><br/>
+            <input type="number" value={comentarioById.id} id='idComment' disabled ></input><br/><br/>
+            <label>Autor</label><br/>
+            <input type="number" value={comentarioById.author} id='authorCommentPut'></input><br/><br/>
+            <label>Comentario</label><br/>
+            <input type="text" value={comentarioById.coment} id='commentCommentPut'></input><br/><br/>
+            <label>Fecha</label><br/>
+            <input type="date" value={comentarioById.date}  id='dateCommentPut'></input><br/><br/>
             <br/>
             <br/>
-            <button type="submit" onClick={() => PutComentario(document.getElementById("idComment").value)}>  Actualizar Comentario </button>
+            <button type="submit" onClick={() => PutComentario(document.getElementById("idComment").value)}>  Actualizar Comentario </button><br/><br/>
+            <br/>
+            <br/>
         </div>
     );
   

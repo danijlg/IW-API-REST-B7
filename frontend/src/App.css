@@ -1,4 +1,4 @@
-body {
+div:not(#mapDiv) {
   text-align: center;
 }
 table {

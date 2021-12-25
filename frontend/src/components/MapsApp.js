@@ -113,27 +113,29 @@ function AppMap() {
       <div name='mapa'>
 
         <div>
-          <h3>Aparcamientos</h3>
-          Latitud <br/><input id="latRadP" type="text" placeholder='Inserte una latitud válida'></input><br/>
-          Longitud<br/><input id="lonRadP" type="text" placeholder='Inserte una longitud válida'></input><br/>
-          Radio <br/><input id="radRadP" type="text" placeholder='Inserte un radio positivo'></input><br/>
-          <button onClick={(evt) => {getAparcamientos(); setStateAparcamientos(0);}}>Busqueda aparcamientos</button><br/>
-          <button onClick={(evt) => {getAparcamientosRadio(); setStateAparcamientos(1);}}>Busqueda aparcamientos en un radio</button><br/>
-          <button onClick={(evt) => {getAparcamientosCerca(); setStateAparcamientos(2);}}>Busqueda aparcamientos mas cercano</button><br/>
+        <br/>
+          <h3>Aparcamientos</h3><br/>
+          Latitud <br/><input id="latRadP" type="text" placeholder='Inserte una latitud válida'></input><br/><br/>
+          Longitud<br/><input id="lonRadP" type="text" placeholder='Inserte una longitud válida'></input><br/><br/>
+          Radio <br/><input id="radRadP" type="text" placeholder='Inserte un radio positivo'></input><br/><br/>
+          <button onClick={(evt) => {getAparcamientos(); setStateAparcamientos(0);}}>Busqueda aparcamientos</button><br/><br/>
+          <button onClick={(evt) => {getAparcamientosRadio(); setStateAparcamientos(1);}}>Busqueda aparcamientos en un radio</button><br/><br/>
+          <button onClick={(evt) => {getAparcamientosCerca(); setStateAparcamientos(2);}}>Busqueda aparcamientos mas cercano</button><br/><br/>
         </div>
           <MapaAparcamientos mapId={'aparcamientos'} pins={aparcamientos} radius={-1} source={[36.7213028,-4.4216366]}></MapaAparcamientos>
 
         <br/><br/>
         <div>
-          <h3>Atascos</h3>
+          <h3>Atascos</h3><br/>
           Latitud <br/><input id="latRadAt" type="text" placeholder='Inserte una latitud válida'></input><br/>
           Longitud <br/><input id="lonRadAt" type="text" placeholder='Inserte una longitud válida'></input><br/>
           Radio <br/><input id="radRadAt" type="text" placeholder='Inserte un radio positivo'></input><br/>
-          <button onClick={(evt) => {getAtascos();}}>Busqueda atascos</button><br/>
-          <button onClick={(evt) => {getAtascosRadio();}}>Busqueda atascos en un radio</button><br/>
-          <button onClick={(evt) => {getAtascosCerca();}}>Busqueda atasco mas cercano</button><br/>
+          <button onClick={(evt) => {getAtascos();}}>Busqueda atascos</button><br/><br/>
+          <button onClick={(evt) => {getAtascosRadio();}}>Busqueda atascos en un radio</button><br/><br/>
+          <button onClick={(evt) => {getAtascosCerca();}}>Busqueda atasco mas cercano</button><br/><br/>
         </div>
           <MapaAtascos mapId={'atascos'} pins={atascos} radius={-1} source={[36.7213028,-4.4216366]}></MapaAtascos>
+          <br/><br/><br/><br/>
 
       </div>
     

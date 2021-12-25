@@ -1,6 +1,3 @@
-import React, {useState, useEffect} from 'react'
-import ComentarioListComponent from './ComentarioListComponent';
-import UsuarioListComponent from './UsuarioListComponent';
 function AppPost() {
   
     /*path('json_aparcamientos', datos_abiertos.views.get_json_aparcamientos),
@@ -45,32 +42,35 @@ function AppPost() {
   
     return(
         <div>
+            <br/>
+            <br/>
             <h2>Posts</h2>
-                        <h3>Insertar Usuario</h3>
-                        <label><br/>Nombre<br/></label>
-                        <input type="text" placeholder='Inserte un nombre' id='nameUser'></input>
-                        <label><br/>Apellido<br/></label>
-                        <input type="text" placeholder='Inserte un apellido' id='surnameUser'></input>
-                        <label><br/>Direccion<br/></label>
-                        <input type="text" placeholder='Inserte una dirección' id='addressUser'></input>
+            <br/>
+                        <h3>Insertar Usuario</h3><br/>
+                        <label>Nombre</label><br/>
+                        <input type="text" placeholder='Inserte un nombre' id='nameUser'></input><br/><br/>
+                        <label>Apellido</label><br/>
+                        <input type="text" placeholder='Inserte un apellido' id='surnameUser'></input><br/><br/>
+                        <label><br/>Direccion<br/></label><br/>
+                        <input type="text" placeholder='Inserte una dirección' id='addressUser'></input><br/><br/>
                         <br/>
                         <br/>
                         <button onClick={PostUsuario}>
                             Insertar Usuario
-                        </button>
+                        </button><br/><br/><br/><br/>
 
-                        <h3>Insertar Comentario</h3>
-                        <label><br/>Autor<br/></label>
-                        <input type="number" placeholder='Inserte una id de usuario' id='authorComment'></input>
-                        <label><br/>Comentario<br/></label>
-                        <input type="text" placeholder='Inserte un comentario' id='commentComment'></input>
-                        <label><br/>Fecha<br/></label>
-                        <input type="date" id='dateComment'></input>
+                        <h3>Insertar Comentario</h3><br/>
+                        <label>Autor</label><br/>
+                        <input type="number" placeholder='Inserte una id de usuario' id='authorComment'></input><br/><br/>
+                        <label>Comentario</label><br/>
+                        <input type="text" placeholder='Inserte un comentario' id='commentComment'></input><br/><br/>
+                        <label>Fecha</label><br/>
+                        <input type="date" id='dateComment'></input><br/><br/>
                         <br/>
                         <br/>
                         <button onClick={()=>{PostComentario();}}>
                             Insertar Comentario
-                        </button>
+                        </button><br/><br/><br/><br/>
         </div>
     );
   
