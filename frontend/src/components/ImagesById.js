@@ -3,23 +3,39 @@ import axios from "axios";
 
 export default class ImagesById extends React.Component {
   state = {
-    posts: {
-      image: "",
-    },
+    posts: [],
   };
 
   componentDidMount() {
     axios.get(`http://localhost:8000/images/posts/`).then((res) => {
       const posts = res.data;
-      // this.setState({ posts });
-      const postById = posts.filter((posts) => posts.id === 14);
-      this.setState({ image: postById[0].image });
-      console.log(postById[0]);
+      this.setState({ posts });
+      console.log(this.state.posts[0].image);
     });
   }
+  // handleChange = async (event) => {
+  //   event.preventDefault();
+
+  //   const postById = this.state.posts.filter(
+  //     (posts) => posts.id === parseInt(event.target.value)
+  //   );
+  //   await this.setState({ postById });
+  //   console.log(event.target.value);
+  //   console.log(postById);
+  // };
 
   render() {
-    // var firstLine = this.state.html.split("\n")[3];
-    return <img src={this.state.image} />;
+    return (
+      <div id="imagenes" className="">
+        {/* <input type="number" name="id" onChange={this.handleChange}></input> */}
+        <ul>
+          {this.state.posts.map((post) => (
+            <li key={post.id}>
+              <img src={post.image} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
