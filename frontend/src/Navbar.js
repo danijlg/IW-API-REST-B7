@@ -7,7 +7,7 @@ import AppList from "./components/ListsApp";
 import AppMap from "./components/MapsApp";
 import AppParametrized from "./components/ParametrizedApp";
 import AppPost from "./components/PostsApp";
-// import "./stylesheets/NavBar.css";
+import "./Navbar.css";
 
 class NavBar extends Component {
   state = {};
@@ -15,7 +15,7 @@ class NavBar extends Component {
     return (
       <div>
         <div id="bar">
-          <Navbar bg={"dark"} variant={"dark"}>
+          <Navbar className="color-nav" variant={"dark"}>
             <Navbar.Brand as={Link} to={"/"}>
             Cliente: Práctica Ingeniería Web
             </Navbar.Brand>
@@ -33,7 +33,7 @@ class NavBar extends Component {
                 Mapas
               </Nav.Link>
               <Nav.Link as={Link} to="/posts">
-                Insertar elemento
+                Insertar
               </Nav.Link>
               <Nav.Link as={Link} to="/actualizar">
                 Actualizar

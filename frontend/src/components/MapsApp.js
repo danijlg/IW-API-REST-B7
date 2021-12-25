@@ -127,9 +127,9 @@ function AppMap() {
         <br/><br/>
         <div>
           <h3>Atascos</h3><br/>
-          Latitud <br/><input id="latRadAt" type="text" placeholder='Inserte una latitud válida'></input><br/>
-          Longitud <br/><input id="lonRadAt" type="text" placeholder='Inserte una longitud válida'></input><br/>
-          Radio <br/><input id="radRadAt" type="text" placeholder='Inserte un radio positivo'></input><br/>
+          Latitud <br/><input id="latRadAt" type="text" placeholder='Inserte una latitud válida'></input><br/><br/>
+          Longitud <br/><input id="lonRadAt" type="text" placeholder='Inserte una longitud válida'></input><br/><br/>
+          Radio <br/><input id="radRadAt" type="text" placeholder='Inserte un radio positivo'></input><br/><br/>
           <button onClick={(evt) => {getAtascos();}}>Busqueda atascos</button><br/><br/>
           <button onClick={(evt) => {getAtascosRadio();}}>Busqueda atascos en un radio</button><br/><br/>
           <button onClick={(evt) => {getAtascosCerca();}}>Busqueda atasco mas cercano</button><br/><br/>
