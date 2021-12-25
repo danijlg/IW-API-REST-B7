@@ -53,7 +53,7 @@ export default function MapaAparcamientos({mapId,pins,data,radius,source}) {
 );
     return (
                 <center>
-                <div class="right-sidebar-container">     
+                <div id="mapDiv" class="right-sidebar-container">     
                     <div class="map" id={mapId}>
                     </div>
                 </div>

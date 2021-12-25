@@ -52,7 +52,7 @@ export default function MapaAtascos({mapId,pins,radius,source}) {
 );
     return (
                 <center>
-                <div class="right-sidebar-container">     
+                <div id="mapDiv" class="right-sidebar-container">     
                     <div class="map" id={mapId}>
                     </div>
                 </div>
