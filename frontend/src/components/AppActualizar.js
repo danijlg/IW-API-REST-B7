@@ -42,6 +42,7 @@ export default function AppActualizar() {
             .then(response => response.json())
             .then(error=>console.log(error))
         alert("Usuario actualizado correctamente")
+        window.location.href = './listas'
     }
 
     function PutComentario(id){
@@ -58,6 +59,7 @@ export default function AppActualizar() {
             .then(response => response.json())
             .then(error=>console.log(error))
         alert("Comentario actualizado correctamente")
+        window.location.href = './listas'
     }
   
     return(

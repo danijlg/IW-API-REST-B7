@@ -52,3 +52,8 @@ button{
   margin-top: 7px;
   margin-bottom: 7px;
 }
+
+#home{
+  align-self: center;
+  padding-top: 20%;
+}

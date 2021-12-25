@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Router, Route, Routes, Link, BrowserRouter } from "react-router-dom";
 import AppActualizar from "./components/AppActualizar";
+import Home from "./components/home";
 import AppList from "./components/ListsApp";
 import AppMap from "./components/MapsApp";
 import AppParametrized from "./components/ParametrizedApp";
@@ -42,6 +43,7 @@ class NavBar extends Component {
         </div>
         <div>
           <Routes>
+            <Route exact path="/" element={<Home/>} />
             <Route exact path="/listas" element={<AppList/>} />
             <Route exact path="/parametrizadas" element={<AppParametrized/>} />
             <Route exact path="/actualizar" element={<AppActualizar/>}/>

@@ -25,12 +25,12 @@ export default function ComentarioListComponent( {lista, actualizar} ) {
                         {
                             lista.map(comentarioList=>{
                                 return(
-                                    <tr class="set_row">
-                                        <td>{comentarioList.id}</td>
-                                        <td>{comentarioList.author}</td>
-                                        <td>{comentarioList.coment}</td>
-                                        <td>{comentarioList.date}</td>
-                                        <td> <button type="submit" onClick={() => DeleteComentario(comentarioList.id)}> Borrar Comentario </button> </td>
+                                    <tr className="set_row">
+                                        <td key="Comentario ID" >{comentarioList.id}</td>
+                                        <td key="Comentario Autor">{comentarioList.author}</td>
+                                        <td key="Comentario Comment">{comentarioList.coment}</td>
+                                        <td key="Comentario Date">{comentarioList.date}</td>
+                                        <td key="Comentario DeleteB"> <button type="submit" onClick={() => DeleteComentario(comentarioList.id)}> Borrar Comentario </button> </td>
                                     </tr>
                                     
                                 )
