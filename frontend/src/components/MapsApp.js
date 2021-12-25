@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,componentDidMount} from 'react';
 import './MapsApp.css';
 import MapaAparcamientos from './MapaAparcamientos';
 import MapaAtascos from './MapaAtascos';
@@ -106,6 +106,7 @@ function AppMap() {
   useEffect(() => {
     getAparcamientos();
     getAtascos();
+    
   }, []);
 
   return(

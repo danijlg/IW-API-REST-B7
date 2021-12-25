@@ -4,6 +4,7 @@ import { Router, Route, Routes, Link, BrowserRouter } from "react-router-dom";
 import AppList from "./components/ListsApp";
 import AppMap from "./components/MapsApp";
 import AppParametrized from "./components/ParametrizedApp";
+import AppPost from "./components/PostsApp";
 // import "./stylesheets/NavBar.css";
 
 class NavBar extends Component {
@@ -23,8 +24,14 @@ class NavBar extends Component {
               <Nav.Link as={Link} to="/parametrizadas">
                 Búsquedas Parametrizadas
               </Nav.Link>
-              <Nav.Link as={Link} to="/mapas">
+              <Nav.Link as={Link} to="/mapas" onClick={
+                ()=>{const interval = setInterval(() => {
+                  window.location.reload();
+                }, 100);}}>
                 Mapas
+              </Nav.Link>
+              <Nav.Link as={Link} to="/posts">
+                Insertar elemento
               </Nav.Link>
             </Nav>
           </Navbar>
@@ -34,6 +41,7 @@ class NavBar extends Component {
             <Route exact path="/listas" element={<AppList/>} />
             <Route exact path="/parametrizadas" element={<AppParametrized/>} />
             <Route exact path="/mapas" element={<AppMap/>}   />
+            <Route exact path="/posts" element={<AppPost/>} />
           </Routes>
         </div>
       </div>
