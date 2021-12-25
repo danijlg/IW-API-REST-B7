@@ -17,6 +17,7 @@ export default class ImageList extends React.Component {
   }
 
   render() {
+    // var firstLine = this.state.html.split("\n")[3];
     return <div dangerouslySetInnerHTML={{ __html: this.state.html }} />;
   }
 }

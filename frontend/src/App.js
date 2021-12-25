@@ -7,6 +7,7 @@ import ImagenesComponent from "./components/ImagenesComponent";
 import AppMap from "./components/MapsApp";
 import SubidaImagen from "./components/SubidaImagen";
 import ImageList from "./components/ImageList";
+import ImagesById from "./components/ImagesById";
 
 function Api_Django() {
   // GET
@@ -479,9 +480,9 @@ function Api_Django() {
         </div>
         <div>
           <h2>Lista de Imágenes</h2>
-          {/* <ImagenesComponent></ImagenesComponent> */}
-          <ImageList></ImageList>
-          {/* <img src="/media/images/deuda.jpeg" alt="deuda.jpeg" /> */}
+
+          {/* <ImageList></ImageList> */}
+          <ImagesById></ImagesById>
         </div>
       </body>
     </html>
