@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Router, Route, Routes, Link, BrowserRouter } from "react-router-dom";
 import AppActualizar from "./components/AppActualizar";
+import FlickrApp from "./components/FlickrShow";
 import Home from "./components/home";
 import AppList from "./components/ListsApp";
 import AppMap from "./components/MapsApp";
@@ -38,6 +39,9 @@ class NavBar extends Component {
               <Nav.Link as={Link} to="/actualizar">
                 Actualizar
               </Nav.Link>
+              <Nav.Link as={Link} to="/images">
+                Imágenes
+              </Nav.Link>
             </Nav>
           </Navbar>
         </div>
@@ -49,6 +53,7 @@ class NavBar extends Component {
             <Route exact path="/actualizar" element={<AppActualizar/>}/>
             <Route exact path="/mapas" element={<AppMap/>}   />
             <Route exact path="/posts" element={<AppPost/>} />
+            <Route exact path="/images" element={<FlickrApp/>} />
           </Routes>
         </div>
       </div>
