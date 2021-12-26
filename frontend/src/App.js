@@ -8,6 +8,7 @@ import AppMap from "./components/MapsApp";
 import SubidaImagen from "./components/SubidaImagen";
 import ImageList from "./components/ImageList";
 import ImagesById from "./components/ImagesById";
+import GalleryExample from "./components/GalleryExample";
 
 function Api_Django() {
   // GET
@@ -477,6 +478,10 @@ function Api_Django() {
           <h2>Subida de Imágenes</h2>
           {/* <ImagenesComponent></ImagenesComponent> */}
           <SubidaImagen></SubidaImagen>
+        </div>
+        <div>
+          <h2>ejemplo galeria</h2>
+          <GalleryExample></GalleryExample>
         </div>
         <div>
           <h2>Lista de Imágenes</h2>
