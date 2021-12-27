@@ -13,7 +13,7 @@ export default function AppActualizar() {
             }
         }).then(response=>response.json())
         .then(response=>getUsuarioById(response))
-        .then(error=>console.log(error))
+        .then(error=>console.log(error))         
     }
 
     function GetComentarioById(id){
@@ -77,11 +77,11 @@ export default function AppActualizar() {
             <label>ID</label><br/>
             <input type="number" value={usuarioById.id} id="idUser" disabled></input><br/><br/>
             <label>Nombre</label><br/>
-            <input type="text" value={usuarioById.name} id="nameUserPut"></input><br/><br/>
+            <input type="text" placeholder={usuarioById.name} id="nameUserPut"></input><br/><br/>
             <label>Apellido</label><br/>
-            <input type="text" value={usuarioById.surname} id="surnameUserPut"></input><br/><br/>
+            <input type="text" placeholder={usuarioById.surname} id="surnameUserPut"></input><br/><br/>
             <label>Direccion</label><br/>
-            <input type="text" value={usuarioById.address} id="addressUserPut"></input><br/><br/>
+            <input type="text" placeholder={usuarioById.address} id="addressUserPut"></input><br/><br/>
             <br/>
             <br/>
             <button type="submit" onClick={() => PutUsuario(document.getElementById("idUser").value)}> Actualizar Usuario </button><br/><br/>
@@ -98,11 +98,11 @@ export default function AppActualizar() {
             <label><br/>ID<br/></label><br/>
             <input type="number" value={comentarioById.id} id='idComment' disabled ></input><br/><br/>
             <label>Autor</label><br/>
-            <input type="number" value={comentarioById.author} id='authorCommentPut'></input><br/><br/>
+            <input type="number" placeholder={comentarioById.author} id='authorCommentPut'></input><br/><br/>
             <label>Comentario</label><br/>
-            <input type="text" value={comentarioById.coment} id='commentCommentPut'></input><br/><br/>
+            <input type="text" placeholder={comentarioById.coment} id='commentCommentPut'></input><br/><br/>
             <label>Fecha</label><br/>
-            <input type="date" value={comentarioById.date}  id='dateCommentPut'></input><br/><br/>
+            <input type="date" id='dateCommentPut'></input><br/><br/>
             <br/>
             <br/>
             <button type="submit" onClick={() => PutComentario(document.getElementById("idComment").value)}>  Actualizar Comentario </button><br/><br/>
