@@ -51,7 +51,7 @@ function AppList() {
         <div>
             <h2><u>Lista completa</u></h2>
             <h3>Lista de Usuarios</h3>
-                <UsuarioListComponent lista={UsuarioList} actualizar={()=> GetUsuarioList()}/>
+                <UsuarioListComponent lista={UsuarioList} actualizar={()=> {GetUsuarioList(); GetCommentsList()}}/>
             
             <h3>Lista de Comentarios</h3>
                 <ComentarioListComponent lista={CommentsList} actualizar={()=> GetCommentsList()}/>

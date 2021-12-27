@@ -24,16 +24,18 @@ export default function UserListComponent( {lista, actualizar} ) {
                 <tbody>
                         {
                             lista.map(userList=>{
-                                return(
-                                    <tr className="set_row">
-                                        <td key="Usuario ID">{userList.id}</td>
-                                        <td key="Usuario Name">{userList.name}</td>
-                                        <td key="Usuario Surname">{userList.surname}</td>
-                                        <td key="Usuario Address">{userList.address}</td>
-                                        <td key="Usuario DeleteB"> <button type="submit" onClick={() => DeleteUsuario(userList.id)}> Borrar Usuario </button> </td>
-                                    </tr>
-                                    
-                                )
+                                if(userList.detail === undefined){
+                                    return(
+                                        <tr className="set_row">
+                                            <td key="Usuario ID">{userList.id}</td>
+                                            <td key="Usuario Name">{userList.name}</td>
+                                            <td key="Usuario Surname">{userList.surname}</td>
+                                            <td key="Usuario Address">{userList.address}</td>
+                                            <td key="Usuario DeleteB"> <button type="submit" onClick={() => DeleteUsuario(userList.id)}> Borrar Usuario </button> </td>
+                                        </tr>
+                                        
+                                    )
+                                }
                             })
                         }
                 </tbody>
