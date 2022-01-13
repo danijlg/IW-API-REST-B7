@@ -3,8 +3,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.utils import serializer_helpers
 from rest_framework.views import APIView
-from .models import Usuario, Comentario
-from .serializers import UsuarioSerializer, ComentarioSerializer
+from .models import Reputacion, Reserva, Trayecto, Usuario, Comentario
+from .serializers import ReputacionSerializer, ReservaSerializer, TrayectoSerializer, UsuarioSerializer, ComentarioSerializer
 from django.db.models import Q
 import datetime
 
@@ -49,3 +49,34 @@ class ComentariosFecha(APIView):
         comentarios = Comentario.objects.filter(date__lte=date).order_by('-date')
         serializer = ComentarioSerializer(comentarios, many=True)
         return Response(serializer.data)
+
+
+#Read-Write: Lista de trayectos
+class TrayectoList(generics.ListCreateAPIView):
+    queryset = Trayecto.objects.all()
+    serializer_class = TrayectoSerializer
+
+#Read-Write-Delete para un trayecto
+class UsuarioDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Trayecto.objects.all()
+    serializer_class = TrayectoSerializer
+
+#Read-Write: Lista de reservas
+class ReservaList(generics.ListCreateAPIView):
+    queryset = Reserva.objects.all()
+    serializer_class = ReservaSerializer
+
+#Read-Write-Delete para una reserva
+class ReservaDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Reserva.objects.all()
+    serializer_class = ReservaSerializer
+
+#Read-Write: Lista de reputaciones
+class ReputacionList(generics.ListCreateAPIView):
+    queryset = Reputacion.objects.all()
+    serializer_class = ReputacionSerializer
+
+#Read-Write-Delete para una reputacion
+class ReputacionDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Reputacion.objects.all()
+    serializer_class = ReputacionSerializer
