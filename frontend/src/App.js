@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
 import NavBar from "./Navbar";
+import FiltroTrayecto from "./FiltroTrayecto";
 
 function Api_Django(){
     return(
@@ -16,6 +17,7 @@ function Api_Django(){
 
             <body>
                 <NavBar />
+                <FiltroTrayecto />
             </body>
         </html>
     );

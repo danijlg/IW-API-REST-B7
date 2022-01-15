@@ -1,3 +1,4 @@
+from typing import Iterator
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.response import Response
@@ -55,6 +56,15 @@ class ComentariosFecha(APIView):
 class TrayectoList(generics.ListCreateAPIView):
     queryset = Trayecto.objects.all()
     serializer_class = TrayectoSerializer
+
+class FiltroTrayecto(APIView):
+    """Format 2021-12-31"""
+    def get(self, request, origen, destino, date):
+        dateArray = date.split('-')
+        datetime.date(int(dateArray[0]), int(dateArray[1]), int(dateArray[2]))
+        trayectos = Trayecto.objects.filter(Q(date__gte=date) & Q(source__icontains=origen) & Q(destiny__icontains=destino)).order_by('-date')
+        serializer = TrayectoSerializer(trayectos, many=True)
+        return Response(serializer.data)
 
 #Read-Write-Delete para un trayecto
 class TrayectoDetail(generics.RetrieveUpdateDestroyAPIView):
