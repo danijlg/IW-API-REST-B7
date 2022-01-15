@@ -4,13 +4,8 @@ import MapaAparcamientos from './MapaAparcamientos';
 import MapaAtascos from './MapaAtascos';
 
 function AppMap() {
-  
-  /*path('json_aparcamientos', datos_abiertos.views.get_json_aparcamientos),
-    path('json_aparcamientos/radio/<str:lon>/<str:lat>/<int:radius>', datos_abiertos.views.get_json_aparcamientos_dentro),
-    path('json_aparcamientos/cerca/<str:lon>/<str:lat>', datos_abiertos.views.get_json_aparcamiento_cercano),
-    path('json_atascos', datos_abiertos.views.get_json_atascos),
-    path('json_atascos/cerca/<str:lon>/<str:lat>', datos_abiertos.views.get_json_atasco_cercano),
-    path('json_atascos/radio/<str:lon>/<str:lat>/<int:radius>', datos_abiertos.views.get_json_atascos_dentro),*/
+
+  const URL_BASE = 'https://franbono2django.herokuapp.com/'
 
   const [aparcamientos, setAparcamientos] = useState([]);
   const [atascos, setAtascos] = useState([]);
@@ -21,7 +16,7 @@ function AppMap() {
   var stateAtascos = 0;
 
   function getAparcamientos(){
-    fetch('http://localhost:8000/datos_abiertos/json_aparcamientos')
+    fetch(URL_BASE + 'datos_abiertos/json_aparcamientos')
     .then((data) => data.json())
     .then((data) => {
       var list = []
@@ -37,7 +32,7 @@ function AppMap() {
     longitudAp = document.getElementById("lonRadP").value;
     radiusAp = document.getElementById("radRadP").value;
 
-    fetch('http://localhost:8000/datos_abiertos/json_aparcamientos/radio/'+latitudAp+'/'+longitudAp+'/'+radiusAp)
+    fetch(URL_BASE  + 'datos_abiertos/json_aparcamientos/radio/'+latitudAp+'/'+longitudAp+'/'+radiusAp)
     .then((data) => data.json())//.then((data)=>JSON.stringify(data).replace('\\','')).then((data)=>JSON.parse(data))
     .then((data) => {
       var list = []
@@ -54,7 +49,7 @@ function AppMap() {
     latitudAp = document.getElementById("latRadP").value;
     longitudAp = document.getElementById("lonRadP").value;
 
-    fetch('http://localhost:8000/datos_abiertos/json_aparcamientos/cerca/'+latitudAp+'/'+longitudAp)
+    fetch(URL_BASE  + 'datos_abiertos/json_aparcamientos/cerca/'+latitudAp+'/'+longitudAp)
     .then((data) => data.json())
     .then((data) => {
       setAparcamientos([data]);
@@ -62,7 +57,7 @@ function AppMap() {
   }
 
   function getAtascos(){
-    fetch('http://localhost:8000/datos_abiertos/json_atascos')
+    fetch(URL_BASE  + 'datos_abiertos/json_atascos')
     .then((data) => data.json())
     .then((data) => {
       var list = []
@@ -79,7 +74,7 @@ function AppMap() {
     longitudAt = document.getElementById("lonRadAt").value;
     radiusAt = document.getElementById("radRadAt").value;
 
-    fetch('http://localhost:8000/datos_abiertos/json_atascos/radio/'+latitudAt+'/'+longitudAt+'/'+radiusAt)
+    fetch(URL_BASE  + 'datos_abiertos/json_atascos/radio/'+latitudAt+'/'+longitudAt+'/'+radiusAt)
     .then((data) => data.json())
     .then((data) => {
       var list = []
@@ -95,7 +90,7 @@ function AppMap() {
     latitudAt = document.getElementById("latRadAt").value;
     longitudAt = document.getElementById("lonRadAt").value;
 
-    fetch('http://localhost:8000/datos_abiertos/json_atascos/cerca/'+latitudAt+'/'+longitudAt)
+    fetch(URL_BASE  + 'datos_abiertos/json_atascos/cerca/'+latitudAt+'/'+longitudAt)
     .then((data) => data.json())
     .then((data) => {
       setAtascos([data]);
