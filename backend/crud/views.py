@@ -57,7 +57,7 @@ class TrayectoList(generics.ListCreateAPIView):
     serializer_class = TrayectoSerializer
 
 #Read-Write-Delete para un trayecto
-class UsuarioDetail(generics.RetrieveUpdateDestroyAPIView):
+class TrayectoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Trayecto.objects.all()
     serializer_class = TrayectoSerializer
 
