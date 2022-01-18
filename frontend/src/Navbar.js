@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import React, { useState, Component } from "react";
+import { Navbar, Nav, NavLink } from "react-bootstrap";
 import { Router, Route, Routes, Link, BrowserRouter } from "react-router-dom";
 import AppActualizar from "./components/AppActualizar";
 import FlickrApp from "./components/FlickrShow";
@@ -8,11 +8,25 @@ import AppList from "./components/ListsApp";
 import AppMap from "./components/MapsApp";
 import AppParametrized from "./components/ParametrizedApp";
 import AppPost from "./components/PostsApp";
+import ProfileApp from "./components/ProfileApp";
 import "./Navbar.css";
+import Login from './components/GoogleLogin';
 
-class NavBar extends Component {
-  state = {};
-  render() {
+function NavBar(){
+
+  const [email, setEmail] = useState("");
+  var perfil;
+  if(email === ""){
+    perfil = <Nav.Link as={Link} to={"."}>
+        <Login setEmail={setEmail}/>
+    </Nav.Link>;
+    
+  }else{
+    perfil = <Nav.Link as={Link} to="/perfil">
+      {email}
+    </Nav.Link>;
+  }
+
     return (
       <div>
         <div id="bar">
@@ -42,6 +56,9 @@ class NavBar extends Component {
               <Nav.Link as={Link} to="/images">
                 Imágenes
               </Nav.Link>
+              
+                {perfil}
+              
             </Nav>
           </Navbar>
         </div>
@@ -54,11 +71,12 @@ class NavBar extends Component {
             <Route exact path="/mapas" element={<AppMap/>}   />
             <Route exact path="/posts" element={<AppPost/>} />
             <Route exact path="/images" element={<FlickrApp/>} />
+            <Route exact path="/perfil" element={<ProfileApp email={email} setEmail={setEmail}/>} />
           </Routes>
         </div>
       </div>
     );
   }
-}
+
 
 export default NavBar;
