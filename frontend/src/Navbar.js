@@ -1,6 +1,6 @@
-import React, { useState, Component } from "react";
-import { Navbar, Nav, NavLink } from "react-bootstrap";
-import { Router, Route, Routes, Link, BrowserRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { Navbar, Nav } from "react-bootstrap";
+import { Route, Routes, Link } from "react-router-dom";
 import AppActualizar from "./components/AppActualizar";
 import FlickrApp from "./components/FlickrShow";
 import Home from "./components/home";
@@ -11,21 +11,34 @@ import AppPost from "./components/PostsApp";
 import ProfileApp from "./components/ProfileApp";
 import "./Navbar.css";
 import Login from './components/GoogleLogin';
+import CreateUser from './components/CreateUser';
 
 function NavBar(){
 
-  const [email, setEmail] = useState("");
+  const [user, setUser]=useState([]);
+
+  const [profile, setProfile] = useState("");
   var perfil;
-  if(email === ""){
+  if(profile === ""){
     perfil = <Nav.Link as={Link} to={"."}>
-        <Login setEmail={setEmail}/>
+        <Login setProfile={setProfile} setUser={setUser} user={user}/>
     </Nav.Link>;
-    
+
   }else{
-    perfil = <Nav.Link as={Link} to="/perfil">
-      {email}
+    
+    if(user === undefined){
+      perfil = <Nav.Link as={Link} to="/crearUsuario">
+      Crear usuario con Google
     </Nav.Link>;
+    }else{
+      perfil = <Nav.Link as={Link} to="/perfil">
+      {profile.email}
+    </Nav.Link>;
+    }
+    
   }
+
+  
 
     return (
       <div>
@@ -71,7 +84,8 @@ function NavBar(){
             <Route exact path="/mapas" element={<AppMap/>}   />
             <Route exact path="/posts" element={<AppPost/>} />
             <Route exact path="/images" element={<FlickrApp/>} />
-            <Route exact path="/perfil" element={<ProfileApp email={email} setEmail={setEmail}/>} />
+            <Route exact path="/perfil" element={<ProfileApp profile={profile} setProfile={setProfile} user={user}/>} />
+            <Route exact path="/crearUsuario" element={<CreateUser profile={profile} setUser={setUser}/>} />
           </Routes>
         </div>
       </div>

@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import { GoogleLogin } from 'react-google-login';
 
 
 const clientId = '648322447419-osfeth6fh3sa8945totgplb844oq6nd0.apps.googleusercontent.com';
 
 function Login(props){
+
+    function GetUserByEmail(email){
+        fetch('http://127.0.0.1:8000/crud/usuario/email/' + email + '/')
+        .then((data) => data.json())
+        .then((data)=>{props.setUser(data[0])})        
+    }
 
     //Actualiza el token para seguir logueado
     const refreshTokenSetup = (res) => {
@@ -23,8 +29,17 @@ function Login(props){
     }
 
     const onSuccess = (res) => {
-        props.setEmail(res.profileObj.email);
+
+        props.setProfile(res.profileObj);
+        console.log(res.profileObj);
         refreshTokenSetup(res);
+        GetUserByEmail(res.profileObj.email);
+
+        if(props.user === ""){
+            console.log("Name: " + res.profileObj.givenName + ", surname: "+res.profileObj.familyName + ", email: "+res.profileObj.email);
+            console.log("He hecho post");
+            GetUserByEmail(res.profileObj.email);
+        }
     };
 
     const onFailure = (res) => {
@@ -44,7 +59,6 @@ function Login(props){
             onSuccess={onSuccess}
             onFailure={onFailure}
             cookiePolicy={'single_host_origin'}
-            //style={{margin: '100px'}}
             isSignedIn={true}
             />
         </div>
