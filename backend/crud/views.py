@@ -4,6 +4,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.utils import serializer_helpers
 from rest_framework.views import APIView
+from rest_framework import status
 from .models import Reputacion, Reserva, Trayecto, Usuario, Comentario
 from .serializers import ReputacionSerializer, ReservaSerializer, TrayectoSerializer, UsuarioSerializer, ComentarioSerializer
 from django.db.models import Q
@@ -59,10 +60,10 @@ class TrayectoList(generics.ListCreateAPIView):
 
 class FiltroTrayecto(APIView):
     """Format 2021-12-31"""
-    def get(self, request, origen, destino, date):
+    def get(self, request, origen, destino, date, plazas):
         dateArray = date.split('-')
         datetime.date(int(dateArray[0]), int(dateArray[1]), int(dateArray[2]))
-        trayectos = Trayecto.objects.filter(Q(date__gte=date) & Q(source__icontains=origen) & Q(destiny__icontains=destino)).order_by('-date')
+        trayectos = Trayecto.objects.filter(Q(date__gte=date) & Q(source__icontains=origen) & Q(destiny__icontains=destino) & Q(places_offered__gte=plazas)).order_by('-date')
         serializer = TrayectoSerializer(trayectos, many=True)
         return Response(serializer.data)
 
@@ -71,15 +72,28 @@ class TrayectoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Trayecto.objects.all()
     serializer_class = TrayectoSerializer
 
+class ReservasTrayecto(APIView):
+    def get(self, request, trayecto):
+        reservas = Reserva.objects.filter(journey=trayecto)
+        serializer = ReservaSerializer(reservas, many=True)
+        return Response(serializer.data)
+    def post(self, request):
+        req_data = request.data
+        data = {
+            'passenger' : req_data.get('passenger'), 
+            'journey' : req_data.get('journey')
+        }
+        return Response(data, status=status.HTTP_200_OK)
+
 #Read-Write: Lista de reservas
 class ReservaList(generics.ListCreateAPIView):
     queryset = Reserva.objects.all()
     serializer_class = ReservaSerializer
 
 #Read-Write-Delete para una reserva
-class ReservaDetail(generics.RetrieveUpdateDestroyAPIView):
+class ReservaDetail(APIView):
     queryset = Reserva.objects.all()
-    serializer_class = ReservaSerializer
+    serializer_class = ReputacionSerializer
 
 #Read-Write: Lista de reputaciones
 class ReputacionList(generics.ListCreateAPIView):

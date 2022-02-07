@@ -15,7 +15,7 @@ class ComentarioSerializer(serializers.ModelSerializer):
 class TrayectoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trayecto
-        fields ='__all__'
+        fields = '__all__'
 
 class ReservaSerializer(serializers.ModelSerializer):
     class Meta:

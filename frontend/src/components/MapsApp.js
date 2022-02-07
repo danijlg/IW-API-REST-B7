@@ -33,7 +33,7 @@ function AppMap() {
     radiusAp = document.getElementById("radRadP").value;
 
     fetch(URL_BASE  + 'datos_abiertos/json_aparcamientos/radio/'+latitudAp+'/'+longitudAp+'/'+radiusAp)
-    .then((data) => data.json())//.then((data)=>JSON.stringify(data).replace('\\','')).then((data)=>JSON.parse(data))
+    .then((data) => data.json())
     .then((data) => {
       var list = []
       data.map(d=>{

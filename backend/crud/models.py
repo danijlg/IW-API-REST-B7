@@ -22,6 +22,7 @@ class Trayecto(models.Model):
     periodicity = models.IntegerField() #Ni idea de que es esto, le he puesto entero
     places_offered = models.IntegerField()
     price = models.FloatField()
+
     
 class Comentario(models.Model):
     author = models.ForeignKey(Usuario, on_delete=models.CASCADE)

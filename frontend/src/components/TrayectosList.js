@@ -1,4 +1,8 @@
+import { useNavigate , Link} from 'react-router-dom';
+import history from '../history';
+
 export default function TrayectosList({lista}) {
+    let navigate = useNavigate();
     return(
         <table>
                 <thead>
@@ -10,7 +14,7 @@ export default function TrayectosList({lista}) {
                         <th>Fecha</th>
                         <th>Hora Salida</th>
                         <th>Duracion</th>
-                        <th>Plazas</th>
+                        <th>Plazas Ofertadas</th>
                         <th>Precio</th>
                     </tr>
                 </thead>
@@ -29,6 +33,7 @@ export default function TrayectosList({lista}) {
                                             <td key="Trayecto Duration">{trayectoList.estimated_duration}</td>
                                             <td key="Trayecto Places">{trayectoList.places_offered}</td>
                                             <td key="Trayecto Price">{trayectoList.price}</td>
+                                            <td key="Trayecto View"> <button type="submit" onClick={() => navigate(`/trayecto/${trayectoList.id}`)}> Ver Trayecto </button> </td>
                                         </tr>
                                         
                                     )

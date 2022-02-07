@@ -8,8 +8,8 @@ export default function FiltroTrayecto()  {
     //const URL_BASE = 'https://franbono2django.herokuapp.com/'
     const URL_BASE = 'http://127.0.0.1:8000/'
 
-    function FiltrarTrayecto(origen, destino, fecha){
-            fetch(URL_BASE + 'crud/trayecto/' + origen + '/' + destino + '/' + fecha + '/',
+    function FiltrarTrayecto(origen, destino, fecha, plazas){
+            fetch(URL_BASE + 'crud/trayecto/' + origen + '/' + destino + '/' + fecha + '/' + plazas + '/',
             {
                 method:'GET',
                 headers:{
@@ -27,11 +27,13 @@ export default function FiltroTrayecto()  {
             <input type="text" placeholder="Origen" id="origen"></input>
             <input type="text" placeholder="Destino" id="destino"></input>
             <input type="date" id="fecha"></input>
+            <input type="number" step="1" placeholder="Plazas" id="plazas"></input>
             <button type="submit" onClick={
                 () => FiltrarTrayecto(
-                    document.getElementById("origen").value,
-                    document.getElementById("destino").value,
-                    document.getElementById("fecha").value
+                    document.getElementById("origen").value.trim(),
+                    document.getElementById("destino").value.trim(),
+                    document.getElementById("fecha").value.trim(),
+                    document.getElementById("plazas").value.trim()
                 )
             }> Buscar </button>
             <br></br>
