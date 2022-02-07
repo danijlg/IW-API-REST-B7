@@ -14,3 +14,4 @@
 .nombre { grid-area: 3 / 2 / 4 / 3; margin: 0px 20px 0px 20px ;}
 .apellidos { grid-area: 4 / 2 / 5 / 3; margin: 0px 20px 0px 20px ;}
 .direccion { grid-area: 5 / 2 / 6 / 3; margin: 0px 20px 0px 20px ;}
+.delete { grid-area: 6 / 2 / 6 / 3; margin: 0px 20px 0px 100px ; width: 150px; height: 50px;}

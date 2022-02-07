@@ -6,6 +6,18 @@ export default function ProfileApp(props){
 
     const [user, setUser]=useState([]);
 
+    function DeleteUsuario(id){
+        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
+        {
+            method:'DELETE', 
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+        alert("Usuario borrado con exito")
+        window.location.href = './'
+    }
+
     useEffect(() => {
         if(props.profile.email !== ""){
             setUser(props.user)
@@ -23,6 +35,8 @@ export default function ProfileApp(props){
             <div class="nombre"> Nombre: {user.name} </div> 
             <div class="apellidos"> Apellidos: {user.surname} </div>
             <div class="direccion"> Dirección: {user.address} </div>
+
+            <button class="delete" type="submit" onClick={() => DeleteUsuario(user.id)}> Borrar Usuario </button>
         </div>
         
     );

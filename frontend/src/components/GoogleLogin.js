@@ -37,7 +37,7 @@ function Login(props){
 
         if(props.user === ""){
             console.log("Name: " + res.profileObj.givenName + ", surname: "+res.profileObj.familyName + ", email: "+res.profileObj.email);
-            console.log("He hecho post");
+            //console.log("He hecho post");
             GetUserByEmail(res.profileObj.email);
         }
     };
