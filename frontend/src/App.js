@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
 import NavBar from "./Navbar";
+import Paypal from './components/PayPal';
 
 function Api_Django(){
+    const [checkOut, setCheckOut] = useState(false);
+
     return(
         <html>
             <head>
@@ -12,10 +15,19 @@ function Api_Django(){
                 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
                 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
                 crossOrigin=""></script>
+                
             </head>
 
             <body>
                 <NavBar />
+                {checkOut ? (
+                    <Paypal/>
+                ) : (
+                    <button
+                        onClick={() => {
+                            setCheckOut(true);
+                        }}> Checkout 
+                </button> )}
             </body>
         </html>
     );
