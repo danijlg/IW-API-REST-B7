@@ -1,11 +1,6 @@
 function AppPost() {
   
-    /*path('json_aparcamientos', datos_abiertos.views.get_json_aparcamientos),
-      path('json_aparcamientos/radio/<str:lon>/<str:lat>/<int:radius>', datos_abiertos.views.get_json_aparcamientos_dentro),
-      path('json_aparcamientos/cerca/<str:lon>/<str:lat>', datos_abiertos.views.get_json_aparcamiento_cercano),
-      path('json_atascos', datos_abiertos.views.get_json_atascos),
-      path('json_atascos/cerca/<str:lon>/<str:lat>', datos_abiertos.views.get_json_atasco_cercano),
-      path('json_atascos/radio/<str:lon>/<str:lat>/<int:radius>', datos_abiertos.views.get_json_atascos_dentro),*/
+    const URL_BASE = 'https://franbono2django.herokuapp.com/'
   
       function PostUsuario(){
         var name = document.getElementById("nameUser").value;
@@ -17,7 +12,7 @@ function AppPost() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: name, surname: surname, address: address })
         };
-        fetch('http://127.0.0.1:8000/crud/usuario/', requestOptions)
+        fetch(URL_BASE + 'crud/usuario/', requestOptions)
         alert("Usuario añadido correctamente")
         window.location.href = './listas'
     }
@@ -32,7 +27,7 @@ function AppPost() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ author: author, coment: comment, date: date })
         };
-        fetch('http://127.0.0.1:8000/crud/comentario/', requestOptions)
+        fetch(URL_BASE + 'crud/comentario/', requestOptions)
             .then(response => response.json())
             .then(data => this.setState({ postId: data.id }));
         alert("Comentario añadido correctamente")

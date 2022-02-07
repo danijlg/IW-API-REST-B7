@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import './App.css';
 import NavBar from "./Navbar";
 import Paypal from './components/PayPal';
+import FiltroTrayecto from "./FiltroTrayecto";
 
 function Api_Django(){
     const [checkOut, setCheckOut] = useState(false);
@@ -28,6 +29,7 @@ function Api_Django(){
                             setCheckOut(true);
                         }}> Checkout 
                 </button> )}
+                <FiltroTrayecto />
             </body>
         </html>
     );

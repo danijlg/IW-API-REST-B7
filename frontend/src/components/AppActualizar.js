@@ -4,8 +4,10 @@ export default function AppActualizar() {
     const [usuarioById, getUsuarioById]=useState([]);
     const [comentarioById, getComentarioById]=useState([]);
 
+    const URL_BASE = 'https://franbono2django.herokuapp.com/'
+
     function GetUsuarioById(id){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
+        fetch(URL_BASE  + 'crud/usuario/' + id + '/',
         {
             method:'GET',
             headers:{
@@ -17,7 +19,7 @@ export default function AppActualizar() {
     }
 
     function GetComentarioById(id){
-        fetch('http://127.0.0.1:8000/crud/comentario/' + id + '/',
+        fetch(URL_BASE  + 'crud/comentario/' + id + '/',
         {
             method:'GET',
             headers:{
@@ -32,34 +34,40 @@ export default function AppActualizar() {
         var name = document.getElementById("nameUserPut").value;
         var surname = document.getElementById("surnameUserPut").value;
         var address = document.getElementById("addressUserPut").value;
-        if(name === "" || surname === "" || address === "") alert("Rellena todos los campos");
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, surname: surname, address: address })
-        };
-        fetch('http://127.0.0.1:8000/crud/usuario/'+ id  + '/', requestOptions)
-            .then(response => response.json())
-            .then(error=>console.log(error))
-        alert("Usuario actualizado correctamente")
-        window.location.href = './listas'
+        if(name === "" || surname === "" || address === ""){
+            alert("Rellena todos los campos");
+        } else {
+            const requestOptions = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, surname: surname, address: address })
+            };
+            fetch(URL_BASE  + 'crud/usuario/'+ id  + '/', requestOptions)
+                .then(response => response.json())
+                .then(error=>console.log(error))
+            alert("Usuario actualizado correctamente")
+            window.location.href = './listas'
+        }
     }
 
     function PutComentario(id){
         var author = document.getElementById("authorCommentPut").value;
         var comment = document.getElementById("commentCommentPut").value;
         var date = document.getElementById("dateCommentPut").value;
-        if(author === "" || comment === "" || date === "") alert("Rellena todos los campos");
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ author: author, coment: comment, date: date })
-        };
-        fetch('http://127.0.0.1:8000/crud/comentario/' + id + '/', requestOptions)
-            .then(response => response.json())
-            .then(error=>console.log(error))
-        alert("Comentario actualizado correctamente")
-        window.location.href = './listas'
+        if(author === "" || comment === "" || date === ""){
+            alert("Rellena todos los campos");
+        } else {
+            const requestOptions = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ author: author, coment: comment, date: date })
+            };
+            fetch(URL_BASE  + 'crud/comentario/' + id + '/', requestOptions)
+                .then(response => response.json())
+                .then(error=>console.log(error))
+            alert("Comentario actualizado correctamente")
+            window.location.href = './listas'
+        }
     }
   
     return(

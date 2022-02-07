@@ -1,6 +1,8 @@
 export default function ComentarioListComponent( {lista, actualizar} ) {
+    const URL_BASE = 'https://franbono2django.herokuapp.com/'
+
     function DeleteComentario(id){
-    fetch('http://127.0.0.1:8000/crud/comentario/' + id + '/',
+    fetch(URL_BASE  + 'crud/comentario/' + id + '/',
     {
         method:'DELETE', 
         headers:{

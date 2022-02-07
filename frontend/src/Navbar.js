@@ -8,6 +8,7 @@ import AppList from "./components/ListsApp";
 import AppMap from "./components/MapsApp";
 import AppParametrized from "./components/ParametrizedApp";
 import AppPost from "./components/PostsApp";
+import TrayectoView from "./components/TrayectoView";
 import "./Navbar.css";
 
 class NavBar extends Component {
@@ -54,6 +55,9 @@ class NavBar extends Component {
             <Route exact path="/mapas" element={<AppMap/>}   />
             <Route exact path="/posts" element={<AppPost/>} />
             <Route exact path="/images" element={<FlickrApp/>} />
+            <Route exact path="/trayecto" element={<TrayectoView/>} >
+                <Route path=":trayectoId" element={<TrayectoView/>} />
+            </Route>
           </Routes>
         </div>
       </div>
