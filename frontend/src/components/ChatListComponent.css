@@ -16,27 +16,25 @@ body {
 }
 #view-code:hover{opacity:1;}
 #chatbox{
-	width:290px;
-	background:goldenrod;
+	width:100%;
+	background:#26c281;
 	border-radius:6px;
-	overflow:hidden;
-	height:484px;
+	overflow-y:scroll;
+	height:1000vh;
 	position:absolute;
 	/*top:100px;*/
-	left:50%;
-	margin-left:-155px;
 }
 
 #friendslist{
 	position:absolute;
 	top:0;
 	left:0;
-	width:290px;
+	width:100%;
 	height:484px;
 }
 #topmenu{
 	height:69px;
-	width:290px;
+	width:100%;
 	border-bottom:1px solid #d8dfe3;	
     background: gainsboro
 }
@@ -53,6 +51,7 @@ body {
 #topmenu span.history:hover{background-position:-190px -47px; cursor:pointer;}
 .friend{
 	height:90px;
+	width: 100%;
 	border-bottom:1px solid #e7ebee;		
 	position:relative;
     background: whitesmoke;

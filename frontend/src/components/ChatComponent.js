@@ -62,6 +62,10 @@ export default function ChatComponent({/*nombreDestino*/}) {
             });
     }
 
+    function backToChatList(){
+        window.location.href = '/chat/';
+    }
+
 
     return( 
     <div>   
@@ -69,6 +73,8 @@ export default function ChatComponent({/*nombreDestino*/}) {
             <div class="chat">
                 <div class="chat-header">
                     <div class="profile">
+                    <button className='btnAtras' onClick={backToChatList}>Atrás</button>
+                    
                         
                             {
                                     <div class="left">

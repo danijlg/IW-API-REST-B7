@@ -54,8 +54,6 @@ export default function ChatListComponent({user}){
         <div id="friendslist">
             <div id="topmenu">
                 <span class="friends"></span>
-                <span class="chats"></span>
-                <span class="history"></span>
             </div>
             
             <div id="friends">
@@ -72,11 +70,11 @@ export default function ChatListComponent({user}){
                                 string = string.substring(0, 35) + "...";
                             }
                             
-                            return(<div class="friend">
+                            return(<div class="friend" onClick={ () => {GoToChat(chat.conversation, user, document.getElementById("nombre"+index).textContent)}}>
                                 
                                 {   
-                                    <p key={index} onClick={ () => {GoToChat(chat.conversation, user, document.getElementById("nombre"+index).textContent)}}>
-                                    <strong id={"nombre"+index}>"placeholder"</strong> <br/>
+                                    <p key={index}>
+                                    <strong id={"nombre"+index}>Nombre Apellido</strong> <br/>
                                     <span>{string}</span>
                                     </p>
                                 }
