@@ -30,7 +30,7 @@ export default function ProfileApp(props){
         <div class="parent">
             <div class="tImg"> Imagen: </div>
             <div class="img"> <img src={props.profile.imageUrl}></img> </div>
-            <div class="log"> <Logout setProfile={props.setProfile}/> </div>
+            <div class="log"> <Logout setProfile={props.setProfile} setUser={props.setUser}/> </div>
             <div class="email"> Email: {user.email} </div>
             <div class="nombre"> Nombre: {user.name} </div> 
             <div class="apellidos"> Apellidos: {user.surname} </div>

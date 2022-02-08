@@ -7,9 +7,13 @@ const clientId = '648322447419-osfeth6fh3sa8945totgplb844oq6nd0.apps.googleuserc
 function Login(props){
 
     function GetUserByEmail(email){
+        var user;
         fetch('http://127.0.0.1:8000/crud/usuario/email/' + email + '/')
         .then((data) => data.json())
-        .then((data)=>{props.setUser(data[0])})        
+        .then((data)=>{
+            sessionStorage.setItem('user', JSON.stringify(data[0]));
+            props.setUser( (data[0]) );
+        })      
     }
 
     //Actualiza el token para seguir logueado

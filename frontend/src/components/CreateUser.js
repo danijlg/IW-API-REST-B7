@@ -5,17 +5,22 @@ export default function CreateUser(props){
     function PostUser(){
         var address = document.getElementById("addressNewUser").value;
         if(address === "") alert("Rellena todos los campos");
-        console.log("Name: " + props.profile.givenName + ", surname: "+props.profile.familyName + ", email: "+props.profile.email + ", address: "+address);
+        alert(props.profile)
+        console.log("Name: " + props.profile.givenName + ", surname: "+ (props.profile.familyName ? props.profile.familyName : "") + ", email: "+props.profile.email + ", address: "+address);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: props.profile.givenName, surname: props.profile.familyName, address: address, email: props.profile.email })
+            body: JSON.stringify({ name: props.profile.givenName, surname: (props.profile.familyName ? props.profile.familyName : "-"), address: address, email: props.profile.email })
         };
         fetch('http://127.0.0.1:8000/crud/usuario/', requestOptions);
         alert("Usuario creado con cuenta Google");
+        console.log(requestOptions.body)
         
-        GetUserByEmail(props.profile.email);
-        window.location.href = './'
+        setTimeout( () => {
+            GetUserByEmail(props.profile.email);
+            //window.location.href = './'
+        }, 100)
+        
     }
 
     function GetUserByEmail(email){

@@ -15,7 +15,7 @@ class ComentarioSerializer(serializers.ModelSerializer):
 class ConversacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conversacion
-        fields = ['id', 'user1', 'user2']
+        fields = ['id', 'userOne', 'userTwo']
 
 class MensajeSerializer(serializers.ModelSerializer):
     class Meta:

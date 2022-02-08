@@ -17,9 +17,10 @@ import CreateUser from './components/CreateUser';
 
 function NavBar(){
 
-  const [user, setUser]=useState([]);
+  const [user, setUser]=useState(undefined);
 
   const [profile, setProfile] = useState("");
+
   var perfil;
   if(profile === ""){
     perfil = <Nav.Link as={Link} to={"."}>
@@ -27,7 +28,6 @@ function NavBar(){
     </Nav.Link>;
 
   }else{
-    
     if(user === undefined){
       perfil = <Nav.Link as={Link} to="/crearUsuario">
       Crear usuario con Google
@@ -50,28 +50,28 @@ function NavBar(){
             Cliente: Práctica Ingeniería Web
             </Navbar.Brand>
             <Nav className={"ml-auto"}>
-              <Nav.Link as={Link} to="/listas/">
+              <Nav.Link id='nav1' as={Link} to="/listas/">
                 Listas
               </Nav.Link>
-              <Nav.Link as={Link} to="/parametrizadas/">
+              <Nav.Link id='nav2' as={Link} to="/parametrizadas/">
                 Búsquedas Parametrizadas
               </Nav.Link>
-              <Nav.Link as={Link} to="/mapas/" onClick={
+              <Nav.Link id='nav3' as={Link} to="/mapas/" onClick={
                 ()=>{const interval = setInterval(() => {
                   window.location.reload();
                 }, 100);}}>
                 Mapas
               </Nav.Link>
-              <Nav.Link as={Link} to="/posts/">
+              <Nav.Link id='nav4' as={Link} to="/posts/">
                 Insertar
               </Nav.Link>
-              <Nav.Link as={Link} to="/actualizar/">
+              <Nav.Link id='nav5' as={Link} to="/actualizar/">
                 Actualizar
               </Nav.Link>
-              <Nav.Link as={Link} to="/images/">
+              <Nav.Link id='nav6' as={Link} to="/images/">
                 Imágenes
               </Nav.Link>
-              <Nav.Link as={Link} to="/chat/">
+              <Nav.Link id='nav7' as={Link} to="/chat/">
                 Chat
               </Nav.Link>
                 {perfil}
@@ -87,10 +87,10 @@ function NavBar(){
             <Route exact path="/mapas/" element={<AppMap/>}   />
             <Route exact path="/posts/" element={<AppPost/>} />
             <Route exact path="/images/" element={<FlickrApp/>} />
-            <Route exact path="/perfil" element={<ProfileApp profile={profile} setProfile={setProfile} user={user}/>} />
+            <Route exact path="/perfil" element={<ProfileApp profile={profile} setProfile={setProfile} user={user} setUser={setUser}/>} />
             <Route exact path="/crearUsuario" element={<CreateUser profile={profile} setUser={setUser}/>} />
-            <Route exact path="/chat/" element={<ChatListComponent user={132}/>} />
-            <Route exact path="/mensaje/:user/:conversation/:nombreContacto/" element={<ChatComponent/>} />
+            <Route exact path="/chat/" element={<ChatListComponent/>} />
+            <Route exact path="/mensaje/:conversation/:nombreContacto/" element={<ChatComponent/>} />
           </Routes>
         </div>
       </div>

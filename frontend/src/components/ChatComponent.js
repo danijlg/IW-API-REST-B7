@@ -2,9 +2,10 @@ import './ChatComponent.css'
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 
-export default function ChatComponent({/*nombreDestino*/}) {
+export default function ChatComponent() {
     const [messagesConversation, getMessagesConversation]=useState([]);
-    const { user, conversation, nombreContacto } = useParams();
+    const { conversation, nombreContacto } = useParams();
+    const user = JSON.parse(sessionStorage.getItem('user')).id
 
     useEffect(() => {
         setTimeout( () => {
@@ -75,6 +76,7 @@ export default function ChatComponent({/*nombreDestino*/}) {
                     <div class="profile">
                     <button className='btnAtras' onClick={backToChatList}>Atrás</button>
                     
+                    
                         
                             {
                                     <div class="left">
@@ -87,6 +89,7 @@ export default function ChatComponent({/*nombreDestino*/}) {
                     <div>
                     {
                         messagesConversation.map(messages => {
+                         if(messages.message != '-----'){
                             if(messages.origin == user){
                                 
                                 return(
@@ -117,6 +120,8 @@ export default function ChatComponent({/*nombreDestino*/}) {
                                 </div>
                                 );
                             }
+                         }
+                            
                         })
                     }
                     </div>

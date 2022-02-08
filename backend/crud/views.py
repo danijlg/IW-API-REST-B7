@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.utils import serializer_helpers
 from rest_framework.views import APIView
 from .models import Conversacion, Mensaje, Usuario, Comentario
-from .serializers import MensajeSerializer, UsuarioSerializer, ComentarioSerializer
+from .serializers import ConversacionSerializer, MensajeSerializer, UsuarioSerializer, ComentarioSerializer
 from django.db.models import Q, F, Max
 import datetime
 
@@ -58,6 +58,14 @@ class ComentariosFecha(APIView):
         serializer = ComentarioSerializer(comentarios, many=True)
         return Response(serializer.data)
 
+class ConversacionesList(generics.ListCreateAPIView):
+    queryset = Conversacion.objects.all()
+    serializer_class = ConversacionSerializer
+
+class ConversacionesDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Conversacion.objects.all()
+    serializer_class = ConversacionSerializer
+
 class MensajesList(generics.ListCreateAPIView):
     queryset = Mensaje.objects.all()
     serializer_class = MensajeSerializer
@@ -68,7 +76,7 @@ class MensajesUltimoConversaciones(APIView):
 
         mensajes = Mensaje.objects.filter(Q(conversation__in = conversacionesAbiertas)).values('conversation').annotate(id = Max('id')).annotate(max_date=Max('date')).values_list('id', flat=True)
 
-        respuesta = Mensaje.objects.filter(Q(id__in = mensajes))
+        respuesta = Mensaje.objects.filter(Q(id__in = mensajes)).order_by('conversation')
         
 
         serializer = MensajeSerializer(respuesta, many=True)
@@ -101,9 +109,9 @@ class ListaConversacionesNombres(APIView):
         for conversacion in conversacionesAbiertas:
             aux = None
             if conversacion.userOne_id == var :
-                aux = Usuario.objects.filter(id = conversacion.userTwo_id).values('name', 'surname').first()
+                aux = Usuario.objects.filter(id = conversacion.userTwo_id).values('id', 'name', 'surname').first()
             elif conversacion.userTwo_id == var:
-                aux = Usuario.objects.filter(id = conversacion.userOne_id).values('name', 'surname').first()
+                aux = Usuario.objects.filter(id = conversacion.userOne_id).values('id', 'name', 'surname').first()
             array.append(aux)
         
 

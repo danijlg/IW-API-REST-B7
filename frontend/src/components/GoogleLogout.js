@@ -7,6 +7,8 @@ function Logout(props){
     const logout = () => {
         props.setProfile("");
         document.getElementById('logout').style.display = 'none';
+        props.setUser(undefined);
+        sessionStorage.setItem('user', null);
         window.location.href = './';
     };
 

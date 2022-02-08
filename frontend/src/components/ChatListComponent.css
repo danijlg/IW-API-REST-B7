@@ -19,14 +19,14 @@ body {
 	width:100%;
 	background:#26c281;
 	border-radius:6px;
-	overflow-y:scroll;
-	height:1000vh;
+	height:90vh;
 	position:absolute;
 	/*top:100px;*/
 }
 
 #friendslist{
 	position:absolute;
+	overflow-y:scroll;
 	top:0;
 	left:0;
 	width:100%;
@@ -50,7 +50,7 @@ body {
 #topmenu span.history{background-position:-190px 24px; cursor:pointer;}
 #topmenu span.history:hover{background-position:-190px -47px; cursor:pointer;}
 .friend{
-	height:90px;
+	height:100px;
 	width: 100%;
 	border-bottom:1px solid #e7ebee;		
 	position:relative;
@@ -79,9 +79,9 @@ body {
 	border:3px solid #fff;
 }
 .friend p{
-	padding:15px 0 0 0;			
+	padding:10px 0 0 0;			
 	float:left;
-	width:220px;
+	width:40%;
 }
 .friend p strong{
   font-weight:600;
@@ -385,4 +385,14 @@ div.message.right .corner{
 #chatview, #sendmessage { 
 overflow:hidden; 
 border-radius:6px; 
+}
+
+.new {
+	margin-top: 1.3%;
+	
+}
+
+#inNewChat {
+	margin-right: 10px;
+	margin-left: -30%;
 }
