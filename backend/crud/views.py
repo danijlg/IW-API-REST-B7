@@ -1,11 +1,13 @@
+from email import message
+import json
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.utils import serializer_helpers
 from rest_framework.views import APIView
-from .models import Usuario, Comentario
-from .serializers import UsuarioSerializer, ComentarioSerializer
-from django.db.models import Q
+from .models import Conversacion, Mensaje, Usuario, Comentario
+from .serializers import MensajeSerializer, UsuarioSerializer, ComentarioSerializer
+from django.db.models import Q, F, Max
 import datetime
 
 # Create your views here.
@@ -49,3 +51,58 @@ class ComentariosFecha(APIView):
         comentarios = Comentario.objects.filter(date__lte=date).order_by('-date')
         serializer = ComentarioSerializer(comentarios, many=True)
         return Response(serializer.data)
+
+class MensajesList(generics.ListCreateAPIView):
+    queryset = Mensaje.objects.all()
+    serializer_class = MensajeSerializer
+
+class MensajesUltimoConversaciones(APIView):
+    def get(self, request, var):
+        conversacionesAbiertas = Conversacion.objects.filter(Q(userOne_id=var) | Q(userTwo_id=var)).values_list('id', flat=True)
+
+        mensajes = Mensaje.objects.filter(Q(conversation__in = conversacionesAbiertas)).values('conversation').annotate(id = Max('id')).annotate(max_date=Max('date')).values_list('id', flat=True)
+
+        respuesta = Mensaje.objects.filter(Q(id__in = mensajes))
+        
+
+        serializer = MensajeSerializer(respuesta, many=True)
+        return Response(serializer.data)
+
+class MensajesConversacion(APIView):
+    def get(self, request, conversation):
+
+        mensajes = Mensaje.objects.filter(conversation = conversation)
+        serializer = MensajeSerializer(mensajes, many=True)
+        return Response(serializer.data)
+
+class ConversacionNombres(APIView):
+    def get(self, request, conversation, user):
+        conversacion = Conversacion.objects.filter(id = conversation)
+
+        respuesta = None
+        if conversacion.first().userOne_id == user :
+            respuesta = Usuario.objects.filter(id = conversacion.first().userTwo_id)
+        elif conversacion.first().userTwo_id == user:
+            respuesta = Usuario.objects.filter(id = conversacion.first().userOne_id)
+
+        serializer = UsuarioSerializer(respuesta.first(), many=False)
+        return Response(serializer.data)
+    
+class ListaConversacionesNombres(APIView):
+    def get(self, request, var):
+        conversacionesAbiertas = Conversacion.objects.filter(Q(userOne_id=var) | Q(userTwo_id=var))
+        array = []
+        for conversacion in conversacionesAbiertas:
+            aux = None
+            if conversacion.userOne_id == var :
+                aux = Usuario.objects.filter(id = conversacion.userTwo_id).values('name', 'surname').first()
+            elif conversacion.userTwo_id == var:
+                aux = Usuario.objects.filter(id = conversacion.userOne_id).values('name', 'surname').first()
+            array.append(aux)
+        
+
+        
+        return Response(array)
+        
+
+        
