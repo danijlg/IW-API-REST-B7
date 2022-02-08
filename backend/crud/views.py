@@ -43,6 +43,12 @@ class UsuarioPorNombre(APIView):
         serializer = UsuarioSerializer(usuario, many=True)
         return Response(serializer.data)
 
+class UsuarioPorEmail(APIView):
+    def get(self, request, email):
+        usuario = Usuario.objects.filter(Q(email__icontains=email))
+        serializer = UsuarioSerializer(usuario, many=True)
+        return Response(serializer.data)
+
 class ComentariosFecha(APIView):
     """Format 2021-12-31"""
     def get(self, request, date):

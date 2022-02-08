@@ -5,7 +5,7 @@ from .models import Conversacion, Mensaje, Usuario, Comentario
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ['id', 'name', 'surname', 'address']
+        fields = ['id', 'name', 'surname', 'address' , 'email']
 
 class ComentarioSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,0 +1,17 @@
+.parent {
+    display: grid;
+    grid-template-columns: 1.3fr, 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin: 20px 20px 20px 20px ;
+    }
+    
+.tImg { grid-area: 2 / 1 / 3 / 2; margin: 20px 20px 0px 20px ;}
+.img { grid-area: 3 / 1 / 5 / 2; margin: 20px 20px 20px 20px ; }
+.log { grid-area: 1 / 2 / 2 / 3; margin: 20px 0px 50px 600px ;}
+.email { grid-area: 2 / 2 / 3 / 3; margin: 0px 20px 0px 20px ;}
+.nombre { grid-area: 3 / 2 / 4 / 3; margin: 0px 20px 0px 20px ;}
+.apellidos { grid-area: 4 / 2 / 5 / 3; margin: 0px 20px 0px 20px ;}
+.direccion { grid-area: 5 / 2 / 6 / 3; margin: 0px 20px 0px 20px ;}
+.delete { grid-area: 6 / 2 / 6 / 3; margin: 0px 20px 0px 100px ; width: 150px; height: 50px;}

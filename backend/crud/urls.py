@@ -26,6 +26,7 @@ urlpatterns = [
     path('comentario/', views.ComentarioList.as_view()),
     path('comentario/<int:pk>/', views.ComentarioDetail.as_view()),
     path('comentario/<slug:date>/', views.ComentariosFecha.as_view()),
+    path('usuario/email/<str:email>/', views.UsuarioPorEmail.as_view()),
     path('usuario/<int:var>/mensajes/', views.MensajesUltimoConversaciones.as_view()),
     path('mensajes/', views.MensajesList.as_view()),
     path('mensajes/<int:conversation>/', views.MensajesConversacion.as_view()),

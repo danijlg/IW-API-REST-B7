@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { Router, Route, Routes, Link, BrowserRouter } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import AppActualizar from "./components/AppActualizar";
 import ChatComponent from "./components/ChatComponent";
 import ChatListComponent from "./components/ChatListComponent";
@@ -10,11 +10,38 @@ import AppList from "./components/ListsApp";
 import AppMap from "./components/MapsApp";
 import AppParametrized from "./components/ParametrizedApp";
 import AppPost from "./components/PostsApp";
+import ProfileApp from "./components/ProfileApp";
 import "./Navbar.css";
+import Login from './components/GoogleLogin';
+import CreateUser from './components/CreateUser';
 
-class NavBar extends Component {
-  state = {};
-  render() {
+function NavBar(){
+
+  const [user, setUser]=useState([]);
+
+  const [profile, setProfile] = useState("");
+  var perfil;
+  if(profile === ""){
+    perfil = <Nav.Link as={Link} to={"."}>
+        <Login setProfile={setProfile} setUser={setUser} user={user}/>
+    </Nav.Link>;
+
+  }else{
+    
+    if(user === undefined){
+      perfil = <Nav.Link as={Link} to="/crearUsuario">
+      Crear usuario con Google
+    </Nav.Link>;
+    }else{
+      perfil = <Nav.Link as={Link} to="/perfil">
+      {profile.email}
+    </Nav.Link>;
+    }
+    
+  }
+
+  
+
     return (
       <div>
         <div id="bar">
@@ -47,6 +74,7 @@ class NavBar extends Component {
               <Nav.Link as={Link} to="/chat/">
                 Chat
               </Nav.Link>
+                {perfil}
             </Nav>
           </Navbar>
         </div>
@@ -59,6 +87,8 @@ class NavBar extends Component {
             <Route exact path="/mapas/" element={<AppMap/>}   />
             <Route exact path="/posts/" element={<AppPost/>} />
             <Route exact path="/images/" element={<FlickrApp/>} />
+            <Route exact path="/perfil" element={<ProfileApp profile={profile} setProfile={setProfile} user={user}/>} />
+            <Route exact path="/crearUsuario" element={<CreateUser profile={profile} setUser={setUser}/>} />
             <Route exact path="/chat/" element={<ChatListComponent user={132}/>} />
             <Route exact path="/mensaje/:user/:conversation/:nombreContacto/" element={<ChatComponent/>} />
           </Routes>
@@ -66,6 +96,6 @@ class NavBar extends Component {
       </div>
     );
   }
-}
+
 
 export default NavBar;
