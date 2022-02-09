@@ -3,11 +3,9 @@ import './App.css';
 import ChatComponent from './components/ChatComponent';
 import ChatListComponent from './components/ChatListComponent';
 import NavBar from "./Navbar";
-import Paypal from './components/PayPal';
-import FiltroTrayecto from "./FiltroTrayecto";
 
 function Api_Django(){
-    const [checkOut, setCheckOut] = useState(false);
+    
 
     return(
         <html>
@@ -23,15 +21,6 @@ function Api_Django(){
 
             <body>
                 <NavBar />
-                {checkOut ? (
-                    <Paypal/>
-                ) : (
-                    <button
-                        onClick={() => {
-                            setCheckOut(true);
-                        }}> Checkout 
-                </button> )}
-                <FiltroTrayecto />
             </body>
         </html>
     );

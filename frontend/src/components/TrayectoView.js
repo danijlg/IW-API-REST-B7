@@ -6,7 +6,7 @@ export default function TrayectoView(){
     const [trayecto, getTrayectoId]=useState([]);
     const [reservas, getReservasTrayecto]=useState([]);
 
-    const URL_BASE = 'http://127.0.0.1:8000/'
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
     let params = useParams();
     

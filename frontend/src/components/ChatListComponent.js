@@ -7,9 +7,10 @@ export default function ChatListComponent({}){
     const [nombresDestino, getNombresDestino]=useState([]);
     const nombresRef= React.useRef(nombresDestino);
     const user = JSON.parse(sessionStorage.getItem('user')).id;
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
     function GetAllChats(user){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + user + '/mensajes/',
+        fetch(URL_BASE + 'crud/usuario/' + user + '/mensajes/',
         {
             method:'GET',
             headers:{
@@ -21,7 +22,7 @@ export default function ChatListComponent({}){
     }
 
     function GetReceiversNames(user){
-        fetch('http://127.0.0.1:8000/crud/mensajes/conversations/' + user + '/',
+        fetch(URL_BASE + 'crud/mensajes/conversations/' + user + '/',
         {
             method:'GET',
             headers:{
@@ -52,7 +53,7 @@ export default function ChatListComponent({}){
         var id = (!isNaN(email)) ? email : undefined;
 
         if(isNaN(email)){ // El usuario ha introducido el correo de otro usuario
-            fetch('http://127.0.0.1:8000/crud/usuario/email/' + email + '/')
+            fetch(URL_BASE + 'crud/usuario/email/' + email + '/')
             .then((data) => data.json())
             //.then((data) => {alert(data[0].id)})
             .then((data) => {AddConversation(data[0].id)})
@@ -66,7 +67,7 @@ export default function ChatListComponent({}){
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userOne: user, userTwo: id })
             };
-            fetch('http://127.0.0.1:8000/crud/conversaciones/', requestOptions)
+            fetch(URL_BASE + 'crud/conversaciones/', requestOptions)
                 .then(response => response.json())
                 .then(response => { 
                     AddFirstComment(response.id)
@@ -83,7 +84,7 @@ export default function ChatListComponent({}){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ origin: user, conversation: idConversacion, message: '-----', date: new Date().toJSON()})
         };
-        fetch('http://127.0.0.1:8000/crud/mensajes/', requestOptions2)
+        fetch(URL_BASE + 'crud/mensajes/', requestOptions2)
             .then(response => response.json())
             .then(response => {
                 GetReceiversNames(user);
@@ -94,7 +95,7 @@ export default function ChatListComponent({}){
     function DeleteConversation(){
         var id = document.getElementById("inDel").value;
 
-        fetch('http://127.0.0.1:8000/crud/conversaciones/' + id + '/',
+        fetch(URL_BASE + 'crud/conversaciones/' + id + '/',
         {
             method:'DELETE', 
             headers:{

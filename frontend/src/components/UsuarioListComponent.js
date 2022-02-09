@@ -1,6 +1,7 @@
 export default function UserListComponent( {lista, actualizar} ) {
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
     function DeleteUsuario(id){
-        fetch('https://franbono2django.herokuapp.com/crud/usuario/' + id + '/',
+        fetch(URL_BASE + 'crud/usuario/' + id + '/',
         {
             method:'DELETE', 
             headers:{

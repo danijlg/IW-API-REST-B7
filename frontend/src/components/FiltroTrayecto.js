@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import TrayectosList from "./components/TrayectosList";
+import TrayectosList from "./TrayectosList";
 
 export default function FiltroTrayecto()  {
 
     const [trayectos, getFilteredTrayectos]=useState([]);
 
-    //const URL_BASE = 'https://franbono2django.herokuapp.com/'
-    const URL_BASE = 'http://127.0.0.1:8000/'
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'    
+    //const URL_BASE = 'http://127.0.0.1:8000/'
 
     function FiltrarTrayecto(origen, destino, fecha, plazas){
             fetch(URL_BASE + 'crud/trayecto/' + origen + '/' + destino + '/' + fecha + '/' + plazas + '/',

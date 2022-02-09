@@ -1,6 +1,6 @@
 function AppPost() {
   
-    const URL_BASE = 'https://franbono2django.herokuapp.com/'
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
   
       function PostUsuario(){
         var name = document.getElementById("nameUser").value;

@@ -6,6 +6,7 @@ export default function ChatComponent() {
     const [messagesConversation, getMessagesConversation]=useState([]);
     const { conversation, nombreContacto } = useParams();
     const user = JSON.parse(sessionStorage.getItem('user')).id
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
     useEffect(() => {
         setTimeout( () => {
@@ -20,7 +21,7 @@ export default function ChatComponent() {
 
     function GetMessagesConversation(conversation){
         //alert(user)
-        fetch('http://127.0.0.1:8000/crud/mensajes/' + conversation + '/',
+        fetch(URL_BASE + 'crud/mensajes/' + conversation + '/',
         {
             method:'GET',
             headers:{
@@ -40,7 +41,7 @@ export default function ChatComponent() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ origin: user, conversation: conversation, message: message, date: new Date().toISOString() })
         };
-        fetch('http://127.0.0.1:8000/crud/mensajes/', requestOptions)
+        fetch(URL_BASE + 'crud/mensajes/', requestOptions)
             .then(response => response.json())
             .catch(error => console.error('Error:', error));
 

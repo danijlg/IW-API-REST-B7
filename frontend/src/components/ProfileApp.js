@@ -5,9 +5,10 @@ import "./ProfileApp.css";
 export default function ProfileApp(props){
 
     const [user, setUser]=useState([]);
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
     function DeleteUsuario(id){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
+        fetch(URL_BASE + 'crud/usuario/' + id + '/',
         {
             method:'DELETE', 
             headers:{

@@ -11,7 +11,7 @@ export default function AppParametrized() {
     const [usuarioComments, getUsuarioComments]=useState([]);
     const [comentarioByDate, getComentarioByDate]=useState([]);
 
-    const URL_BASE = 'https://franbono2django.herokuapp.com/'
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
     function GetUsuarioById(id){
             fetch(URL_BASE + 'crud/usuario/' + id + '/',

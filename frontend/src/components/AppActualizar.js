@@ -4,7 +4,7 @@ export default function AppActualizar() {
     const [usuarioById, getUsuarioById]=useState([]);
     const [comentarioById, getComentarioById]=useState([]);
 
-    const URL_BASE = 'https://franbono2django.herokuapp.com/'
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
     function GetUsuarioById(id){
         fetch(URL_BASE  + 'crud/usuario/' + id + '/',

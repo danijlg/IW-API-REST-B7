@@ -1,5 +1,5 @@
 export default function ComentarioListComponent( {lista, actualizar} ) {
-    const URL_BASE = 'https://franbono2django.herokuapp.com/'
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
     function DeleteComentario(id){
     fetch(URL_BASE  + 'crud/comentario/' + id + '/',
