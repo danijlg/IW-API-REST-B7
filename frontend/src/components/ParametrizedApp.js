@@ -11,8 +11,10 @@ export default function AppParametrized() {
     const [usuarioComments, getUsuarioComments]=useState([]);
     const [comentarioByDate, getComentarioByDate]=useState([]);
 
+    const URL_BASE = 'https://franbono2django.herokuapp.com/'
+
     function GetUsuarioById(id){
-            fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
+            fetch(URL_BASE + 'crud/usuario/' + id + '/',
             {
                 method:'GET',
                 headers:{
@@ -24,7 +26,7 @@ export default function AppParametrized() {
     }
 
     function GetComentarioById(id){
-        fetch('http://127.0.0.1:8000/crud/comentario/' + id + '/',
+        fetch(URL_BASE + 'crud/comentario/' + id + '/',
         {
             method:'GET',
             headers:{
@@ -38,7 +40,7 @@ export default function AppParametrized() {
     
 
     function GetUsuarioByName(name){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + name + '/',
+        fetch(URL_BASE + 'crud/usuario/' + name + '/',
         {
             method:'GET',
             headers:{
@@ -50,7 +52,7 @@ export default function AppParametrized() {
     }
 
     function GetUsuarioComments(id){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/comentario/',
+        fetch(URL_BASE + 'crud/usuario/' + id + '/comentario/',
         {
             method:'GET',
             headers:{
@@ -62,7 +64,7 @@ export default function AppParametrized() {
     }
 
     function GetComentarioByDate(date){
-        fetch('http://127.0.0.1:8000/crud/comentario/' + date + '/',
+        fetch(URL_BASE + 'crud/comentario/' + date + '/',
         {
             method:'GET',
             headers:{

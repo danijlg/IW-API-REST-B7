@@ -12,9 +12,12 @@ function AppList() {
   
       const [UsuarioList,getUsuarioList]=useState([]);
       const [CommentsList, getCommentsList]=useState([]);
+      const URL_BASE = 'https://franbono2django.herokuapp.com/'
   
     function GetUsuarioList(){
-        fetch('http://127.0.0.1:8000/crud/usuario/',
+        //Prueba heroku
+        //fetch('http://127.0.0.1:8000/crud/usuario/',
+        fetch(URL_BASE + 'crud/usuario/',
         {
             method:'GET',
             headers:{
@@ -26,7 +29,7 @@ function AppList() {
     }
 
     function GetCommentsList(){
-        fetch('http://127.0.0.1:8000/crud/comentario/',
+        fetch(URL_BASE + 'crud/comentario/',
         {
             method:'GET',
             headers:{

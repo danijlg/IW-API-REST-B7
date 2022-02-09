@@ -1,6 +1,6 @@
 export default function UserListComponent( {lista, actualizar} ) {
     function DeleteUsuario(id){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
+        fetch('https://franbono2django.herokuapp.com/crud/usuario/' + id + '/',
         {
             method:'DELETE', 
             headers:{

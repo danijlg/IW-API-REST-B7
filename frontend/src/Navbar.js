@@ -10,6 +10,7 @@ import AppList from "./components/ListsApp";
 import AppMap from "./components/MapsApp";
 import AppParametrized from "./components/ParametrizedApp";
 import AppPost from "./components/PostsApp";
+import TrayectoView from "./components/TrayectoView";
 import ProfileApp from "./components/ProfileApp";
 import "./Navbar.css";
 import Login from './components/GoogleLogin';
@@ -81,6 +82,7 @@ function NavBar(){
         <div>
           <Routes>
             <Route exact path="/" element={<Home/>} />
+
             <Route exact path="/listas/" element={<AppList/>} />
             <Route exact path="/parametrizadas/" element={<AppParametrized/>} />
             <Route exact path="/actualizar/" element={<AppActualizar/>}/>
@@ -91,6 +93,9 @@ function NavBar(){
             <Route exact path="/crearUsuario" element={<CreateUser profile={profile} setUser={setUser}/>} />
             <Route exact path="/chat/" element={<ChatListComponent/>} />
             <Route exact path="/mensaje/:conversation/:nombreContacto/" element={<ChatComponent/>} />
+             <Route exact path="/trayecto" element={<TrayectoView/>} >
+               <Route path=":trayectoId" element={<TrayectoView/>} />
+            </Route>
           </Routes>
         </div>
       </div>
