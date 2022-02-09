@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
+import ChatComponent from './components/ChatComponent';
+import ChatListComponent from './components/ChatListComponent';
 import NavBar from "./Navbar";
 
 function Api_Django(){
+    
+
     return(
         <html>
             <head>
@@ -12,6 +16,7 @@ function Api_Django(){
                 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
                 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
                 crossOrigin=""></script>
+                
             </head>
 
             <body>

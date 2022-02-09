@@ -1,6 +1,7 @@
 export default function UserListComponent( {lista, actualizar} ) {
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
     function DeleteUsuario(id){
-        fetch('http://127.0.0.1:8000/crud/usuario/' + id + '/',
+        fetch(URL_BASE + 'crud/usuario/' + id + '/',
         {
             method:'DELETE', 
             headers:{
@@ -18,6 +19,7 @@ export default function UserListComponent( {lista, actualizar} ) {
                         <th>Name</th>
                         <th>Surname</th>
                         <th>Address</th>
+                        <th>Email</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -31,6 +33,7 @@ export default function UserListComponent( {lista, actualizar} ) {
                                             <td key="Usuario Name">{userList.name}</td>
                                             <td key="Usuario Surname">{userList.surname}</td>
                                             <td key="Usuario Address">{userList.address}</td>
+                                            <td key="Usuario Email">{userList.email}</td>
                                             <td key="Usuario DeleteB"> <button type="submit" onClick={() => DeleteUsuario(userList.id)}> Borrar Usuario </button> </td>
                                         </tr>
                                         

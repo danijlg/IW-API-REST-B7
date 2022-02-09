@@ -1,3 +1,9 @@
 .color-nav {
     background-color: #009879;
 }
+
+.navbar{
+    height: 80px;
+}
+
+.navLog{visibility: hidden;}

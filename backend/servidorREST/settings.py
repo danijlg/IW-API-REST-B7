@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,16 +22,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'h3g$e#+^z1ckfp_p(sdfuws-)&+u9%(qiht9ra89@4niiw)l)f'
+#SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = False #False for heroku
+DEBUG = True  
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'safe-sea-73926.herokuapp.com']
+
 
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS  = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,12 +47,11 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'images',
-    
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',#cors-headers
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',#cors-headers
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,6 +61,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'servidorREST.urls'
+
+WHITENOISE_USE_FINDERS = True
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -91,6 +97,7 @@ DATABASES = {
         'ENFORCE_SCHEMA': 'False',
         'CLIENT': {
            'host': 'mongodb+srv://IWEBadmin:IWEBadmin@clusteriweb.sml2w.mongodb.net/iweb?retryWrites=true&w=majority',
+           #'host' : os.environ.get('MONGODB_URI')
         }
     }
 }
@@ -131,7 +138,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #Staticfiles heroku
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+#django_heroku.settings(locals())
