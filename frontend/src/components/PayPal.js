@@ -13,9 +13,10 @@ export default function Paypal(props) {
         };
         fetch(URL_BASE + 'crud/reserva/', requestOptions)
             .then(response => response.json())
+            .then(response => console.log(response))
             .then(data => this.setState({ postId: data.id }));
         
-        window.location.reload();
+        //window.location.reload();
         alert("Reserva añadida correctamente");
     }
 

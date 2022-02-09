@@ -21,6 +21,7 @@ export default function ReservaList({lista}){
     }
 
     useEffect(() => {
+        console.log(lista)
         getUsuariosReserva(initialState);
         lista.map(reservaList=>{
             if(reservaList.detail === undefined){
@@ -40,6 +41,7 @@ export default function ReservaList({lista}){
                 </thead>
                 <tbody>
                          {
+                                    
                             usuarios.map(users=>{
                                 if(users.detail === undefined){
                                     return(

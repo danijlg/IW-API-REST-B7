@@ -36,13 +36,10 @@ export default function TrayectoView(){
         .then(error=>console.log(error))
     }
 
-    function mostrarReservas(){
-        document.getElementById("reserva").style.visibility = 'visible';
-    }
-
     useEffect(() => {
         getTrayecto(params.trayectoId);
         getReservas(params.trayectoId);
+        console.log("user", JSON.parse(sessionStorage.getItem('user')).id)
     }, [params.trayectoId]);
 
 
@@ -59,22 +56,22 @@ export default function TrayectoView(){
             <label>Plazas Libres: {trayecto.places_offered - reservas.length} </label><br/>
             <label>Precio: {trayecto.price} </label><br/><br/>
 
+
+                <h3 >Reservas</h3>
+                <ReservaList lista={reservas} /><br/><br/>
+            
             {checkOut ? (
                     <Paypal trayecto={trayecto}/>
                 ) : (
                     <button
                         onClick={() => {
-                            setCheckOut(true);
-                            mostrarReservas();
-                        }}> Reservas / Reservar 
+                            if(trayecto.places_offered - reservas.length > 0){
+                                setCheckOut(true);
+                            }else{                               
+                                alert("No hay plazas libres")
+                            }
+                        }}> Reservar
                 </button> )}
-
-            <div id="reserva">
-                <h3 >Reservas</h3>
-                <ReservaList lista={reservas} /><br/><br/>
-            </div>
-            
-            
         </div>
     );
 }

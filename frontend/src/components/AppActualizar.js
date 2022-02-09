@@ -38,7 +38,7 @@ export default function AppActualizar() {
             alert("Rellena todos los campos");
         } else {
             const requestOptions = {
-                method: 'PUT',
+                method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: name, surname: surname, address: address })
             };
@@ -46,7 +46,7 @@ export default function AppActualizar() {
                 .then(response => response.json())
                 .then(error=>console.log(error))
             alert("Usuario actualizado correctamente")
-            window.location.href = './listas'
+            window.location.href = '/listas'
         }
     }
 
@@ -66,7 +66,7 @@ export default function AppActualizar() {
                 .then(response => response.json())
                 .then(error=>console.log(error))
             alert("Comentario actualizado correctamente")
-            window.location.href = './listas'
+            window.location.href = '/listas'
         }
     }
   

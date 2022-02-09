@@ -14,7 +14,7 @@ function AppPost() {
         };
         fetch(URL_BASE + 'crud/usuario/', requestOptions)
         alert("Usuario añadido correctamente")
-        window.location.href = './listas'
+        window.location.href = '/listas/'
     }
 
     function PostComentario(){
@@ -31,7 +31,7 @@ function AppPost() {
             .then(response => response.json())
             .then(data => this.setState({ postId: data.id }));
         alert("Comentario añadido correctamente")
-        window.location.href = './listas'
+        window.location.href = '/listas/'
     }
 
   

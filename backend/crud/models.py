@@ -7,7 +7,7 @@ class Usuario(models.Model):
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=100)
     address = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50)
+    email = models.EmailField(max_length=50, blank=True)
 
     def get_comments(self):
        return Comentario.objects.filter( {'author': self.id} )
