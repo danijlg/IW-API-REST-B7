@@ -45,6 +45,8 @@ function Login(props){
             //console.log("He hecho post");
             GetUserByEmail(res.profileObj.email);
         }
+
+        
     };
 
     const onFailure = (res) => {

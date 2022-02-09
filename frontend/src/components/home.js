@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Paypal from './PayPal';
 import FiltroTrayecto from "./FiltroTrayecto";
 
 export default function Home() {
-    const [checkOut, setCheckOut] = useState(false);
 
     /*setInterval(()=> {
         if(sessionStorage.getItem('user') === null){
@@ -29,14 +27,7 @@ export default function Home() {
     return(
         <div id='home'>
             {/*<h1>Seleccionar apartado en la Navbar para cambiar de página</h1>*/}
-            {checkOut ? (
-                    <Paypal/>
-                ) : (
-                    <button
-                        onClick={() => {
-                            setCheckOut(true);
-                        }}> Checkout 
-                </button> )}
+            
                 <FiltroTrayecto />
         </div>
     );

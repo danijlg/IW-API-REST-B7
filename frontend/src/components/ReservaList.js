@@ -14,7 +14,9 @@ export default function ReservaList({lista}){
                 'Content-Type': 'application/json'
             }
         }).then(response=>response.json())
-        .then(response=>getUsuariosReserva(usuarios.concat(response)))
+        //.then(response=>getUsuariosReserva(usuarios.concat(response)))
+        .then(response=>usuarios[usuarios.length] = response)
+        .then(getUsuariosReserva(usuarios))
         .then(error=>console.log(error))         
     }
 
