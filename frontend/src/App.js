@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
+import ChatComponent from './components/ChatComponent';
+import ChatListComponent from './components/ChatListComponent';
 import NavBar from "./Navbar";
 import Paypal from './components/PayPal';
 import FiltroTrayecto from "./FiltroTrayecto";
