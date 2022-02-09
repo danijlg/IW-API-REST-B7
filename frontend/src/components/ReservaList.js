@@ -4,7 +4,7 @@ export default function ReservaList({lista}){
     const initialState = [];
     const [usuarios, getUsuariosReserva]=useState([]);
 
-    const URL_BASE = 'http://127.0.0.1:8000/'
+    const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
     function GetUsuario(id){
         fetch(URL_BASE  + 'crud/usuario/' + id + '/',
@@ -14,7 +14,9 @@ export default function ReservaList({lista}){
                 'Content-Type': 'application/json'
             }
         }).then(response=>response.json())
-        .then(response=>getUsuariosReserva(usuarios.concat(response)))
+        //.then(response=>getUsuariosReserva(usuarios.concat(response)))
+        .then(response=>usuarios[usuarios.length] = response)
+        .then(getUsuariosReserva(usuarios))
         .then(error=>console.log(error))         
     }
 

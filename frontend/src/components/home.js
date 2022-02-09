@@ -1,4 +1,8 @@
+import React, { useState } from "react";
+import FiltroTrayecto from "./FiltroTrayecto";
+
 export default function Home() {
+
     /*setInterval(()=> {
         if(sessionStorage.getItem('user') === null){
             document.getElementById("nav1").style.visibility = 'hidden';
@@ -22,7 +26,9 @@ export default function Home() {
 
     return(
         <div id='home'>
-            <h1>Seleccionar apartado en la Navbar para cambiar de página</h1>
+            {/*<h1>Seleccionar apartado en la Navbar para cambiar de página</h1>*/}
+            
+                <FiltroTrayecto />
         </div>
     );
   

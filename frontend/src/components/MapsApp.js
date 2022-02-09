@@ -5,7 +5,7 @@ import MapaAtascos from './MapaAtascos';
 
 function AppMap() {
 
-  const URL_BASE = 'https://franbono2django.herokuapp.com/'
+  const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
   const [aparcamientos, setAparcamientos] = useState([]);
   const [atascos, setAtascos] = useState([]);

@@ -12,7 +12,8 @@ function AppList() {
   
       const [UsuarioList,getUsuarioList]=useState([]);
       const [CommentsList, getCommentsList]=useState([]);
-      const URL_BASE = 'https://franbono2django.herokuapp.com/'
+      const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
+      //const URL_BASE = 'http://127.0.0.1:8000/'
   
     function GetUsuarioList(){
         //Prueba heroku

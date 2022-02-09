@@ -1,7 +1,24 @@
 import React, { useEffect, useRef } from "react";
 
-export default function Paypal() {
+const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
+
+export default function Paypal(props) {
     const paypal = useRef()
+
+    function Reservar(){
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ passenger: JSON.parse(sessionStorage.getItem('user')).id, journey: props.trayecto.id})
+        };
+        fetch(URL_BASE + 'crud/reserva/', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }));
+        
+        window.location.reload();
+        alert("Reserva añadida correctamente");
+    }
+
     useEffect(() => {
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
@@ -12,7 +29,7 @@ export default function Paypal() {
                             description: "Viaje",
                             amount: {
                                 currency: "EUR",
-                                value: 10.00
+                                value: props.trayecto.price
                             }
                         }
                     ]
@@ -21,6 +38,7 @@ export default function Paypal() {
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture();
                 console.log(order);
+                Reservar();
             },
             onError: (err) => {
                 console.log(err);

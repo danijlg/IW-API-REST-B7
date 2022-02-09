@@ -1,0 +1,7 @@
+JS
+google-react-login
+axios
+
+
+Django
+django-allauth

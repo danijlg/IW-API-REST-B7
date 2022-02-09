@@ -36,7 +36,13 @@ function NavBar(){
     }else{
       perfil = <Nav.Link as={Link} to="/perfil">
       {profile.email}
-    </Nav.Link>;
+      </Nav.Link>;
+
+      var navElements = document.getElementsByClassName('navLog');
+      for(var i =0; i < navElements.length;i++){
+          navElements[i].style.visibility = 'visible';
+      }
+    
     }
     
   }
@@ -51,28 +57,31 @@ function NavBar(){
             Cliente: Práctica Ingeniería Web
             </Navbar.Brand>
             <Nav className={"ml-auto"}>
-              <Nav.Link id='nav1' as={Link} to="/listas/">
+              <Nav.Link className='navLog' id='nav0' as={Link} to="/">
+                Trayectos
+              </Nav.Link>
+              <Nav.Link className='navLog' id='nav1' as={Link} to="/listas/">
                 Listas
               </Nav.Link>
-              <Nav.Link id='nav2' as={Link} to="/parametrizadas/">
+              <Nav.Link className='navLog' id='nav2' as={Link} to="/parametrizadas/">
                 Búsquedas Parametrizadas
               </Nav.Link>
-              <Nav.Link id='nav3' as={Link} to="/mapas/" onClick={
+              <Nav.Link className='navLog' id='nav3' as={Link} to="/mapas/" onClick={
                 ()=>{const interval = setInterval(() => {
                   window.location.reload();
                 }, 100);}}>
                 Mapas
               </Nav.Link>
-              <Nav.Link id='nav4' as={Link} to="/posts/">
+              <Nav.Link className='navLog' id='nav4' as={Link} to="/posts/">
                 Insertar
               </Nav.Link>
-              <Nav.Link id='nav5' as={Link} to="/actualizar/">
+              <Nav.Link className='navLog' id='nav5' as={Link} to="/actualizar/">
                 Actualizar
               </Nav.Link>
-              <Nav.Link id='nav6' as={Link} to="/images/">
+              <Nav.Link className='navLog' id='nav6' as={Link} to="/images/">
                 Imágenes
               </Nav.Link>
-              <Nav.Link id='nav7' as={Link} to="/chat/">
+              <Nav.Link className='navLog' id='nav7' as={Link} to="/chat/">
                 Chat
               </Nav.Link>
                 {perfil}

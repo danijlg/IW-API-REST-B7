@@ -3,12 +3,13 @@ import { GoogleLogin } from 'react-google-login';
 
 
 const clientId = '648322447419-osfeth6fh3sa8945totgplb844oq6nd0.apps.googleusercontent.com';
+const URL_BASE = 'https://safe-sea-73926.herokuapp.com/'
 
 function Login(props){
 
     function GetUserByEmail(email){
         var user;
-        fetch('http://127.0.0.1:8000/crud/usuario/email/' + email + '/')
+        fetch(URL_BASE + 'crud/usuario/email/' + email + '/')
         .then((data) => data.json())
         .then((data)=>{
             sessionStorage.setItem('user', JSON.stringify(data[0]));
@@ -44,6 +45,8 @@ function Login(props){
             //console.log("He hecho post");
             GetUserByEmail(res.profileObj.email);
         }
+
+        
     };
 
     const onFailure = (res) => {

@@ -28,7 +28,7 @@ SECRET_KEY = 'h3g$e#+^z1ckfp_p(sdfuws-)&+u9%(qiht9ra89@4niiw)l)f'
 #DEBUG = False #False for heroku
 DEBUG = True  
 
-ALLOWED_HOSTS = ['127.0.0.1', 'franbono2django.herokuapp.com']
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'safe-sea-73926.herokuapp.com']
 
 
 

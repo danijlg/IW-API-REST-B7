@@ -24,6 +24,14 @@ body {
 	/*top:100px;*/
 }
 
+#inNewChat{margin-left: 20px;margin-right: 20px;}
+
+#new{margin-left: 20px;}
+
+#inDel{margin-left: 20px;margin-right: 20px;}
+
+#btnDel{margin-left: 20px;}
+
 #friendslist{
 	position:absolute;
 	overflow-y:scroll;
@@ -392,7 +400,4 @@ border-radius:6px;
 	
 }
 
-#inNewChat {
-	margin-right: 10px;
-	margin-left: -30%;
-}
+
